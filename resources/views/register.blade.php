@@ -1,7 +1,7 @@
 <x-layout>
     {{-- Main --}}
     <main class="flex justify-between w-full max-h-screen font-intern">
-        <div class="flex flex-col pt-10 px-4 w-full md:pl-32 md:w-7/12">
+        <div class="flex flex-col py-10 px-4 w-full md:pl-32 md:w-7/12">
             <div class="mb-12">
                 <img src="{{ asset('img/Group 1.png') }}" alt="coronaImg">
             </div>
@@ -13,8 +13,9 @@
             <form action="#" method="post" class="flex flex-col w-full mt-4 md:w-6/12">
 
                 <label for="username" class="mb-2">Username</label>
-                <input class="px-4 py-4 rounded-lg border border-gray-200 mb-4 placeholder-dark" type="text"
-                    name="username" placeholder="Enter unique username or email">
+                <input class="px-4 py-4 rounded-lg border border-gray-200 mb-1 placeholder-dark" type="text" name="username"
+                    placeholder="Enter unique username or email">
+                <small class="text-dark mb-2 text-sm">Username should be unique, min 3 symbols</small>
 
                 <label for="username" class="mb-2">Email</label>
                 <input class="px-4 py-4 rounded-lg border border-gray-200 mb-4 placeholder-dark" type="text"
@@ -24,9 +25,9 @@
                 <input class="px-4 py-4 rounded-lg border border-gray-200 mb-4 placeholder-dark" type="password"
                     name="password" placeholder="Fill in password">
 
-                <label for="password" class="mb-2">Password</label>
+                <label for="password" class="mb-2">Repeat password</label>
                 <input class="px-4 py-4 rounded-lg border border-gray-200 mb-4 placeholder-dark" type="password"
-                    name="password" placeholder="Repeat password">
+                    name="repeat_password" placeholder="Repeat password">
 
                 <div>
                     <input type="checkbox" id="remember" name="remember"
