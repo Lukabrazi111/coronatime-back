@@ -23,7 +23,7 @@
                 <div class="flex justify-between items-center">
                     <div>
                         <input type="checkbox" id="remember" name="remember"
-                            class="border border-gray-200 text-success rounded-4 form-checkbox">
+                            class="border border-gray-200 text-success transition duration-100 ease-in rounded-4 form-checkbox">
                         <label class="ml-1" for="remember">Remember this device</label>
                     </div>
                     <div>
