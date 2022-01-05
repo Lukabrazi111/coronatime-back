@@ -27,7 +27,7 @@
                         <label class="ml-1" for="remember">Remember this device</label>
                     </div>
                     <div>
-                        <a class="hover:underline text-link" href="#">Forgot password?</a>
+                        <a class="hover:underline text-link" href="{{ route('forgot.password') }}">Forgot password?</a>
                     </div>
                 </div>
 

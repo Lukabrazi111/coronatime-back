@@ -13,8 +13,8 @@
             <form action="#" method="post" class="flex flex-col w-full mt-4 md:w-6/12">
 
                 <label for="username" class="mb-2">Username</label>
-                <input class="px-4 py-4 rounded-lg border border-gray-200 mb-1 placeholder-dark" type="text" name="username"
-                    placeholder="Enter unique username or email">
+                <input class="px-4 py-4 rounded-lg border border-gray-200 mb-1 placeholder-dark" type="text"
+                    name="username" placeholder="Enter unique username or email">
                 <small class="text-dark mb-2 text-sm">Username should be unique, min 3 symbols</small>
 
                 <label for="username" class="mb-2">Email</label>
