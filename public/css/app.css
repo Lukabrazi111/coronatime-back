@@ -549,9 +549,46 @@ select {
   --tw-border-opacity: 1;
   border-color: rgb(229 231 235 / var(--tw-border-opacity));
 }
+.container {
+  width: 100%;
+}
+@media (min-width: 640px) {
+
+  .container {
+    max-width: 640px;
+  }
+}
+@media (min-width: 768px) {
+
+  .container {
+    max-width: 768px;
+  }
+}
+@media (min-width: 1024px) {
+
+  .container {
+    max-width: 1024px;
+  }
+}
+@media (min-width: 1280px) {
+
+  .container {
+    max-width: 1280px;
+  }
+}
+@media (min-width: 1536px) {
+
+  .container {
+    max-width: 1536px;
+  }
+}
 .my-5 {
   margin-top: 1.25rem;
   margin-bottom: 1.25rem;
+}
+.mx-auto {
+  margin-left: auto;
+  margin-right: auto;
 }
 .mb-12 {
   margin-bottom: 3rem;
@@ -589,8 +626,20 @@ select {
 .mb-64 {
   margin-bottom: 16rem;
 }
+.mr-2 {
+  margin-right: 0.5rem;
+}
+.ml-2 {
+  margin-left: 0.5rem;
+}
+.inline-block {
+  display: inline-block;
+}
 .flex {
   display: flex;
+}
+.inline-flex {
+  display: inline-flex;
 }
 .hidden {
   display: none;
@@ -598,8 +647,38 @@ select {
 .h-screen {
   height: 100vh;
 }
+.h-full {
+  height: 100%;
+}
+.h-3 {
+  height: 0.75rem;
+}
+.h-10 {
+  height: 2.5rem;
+}
+.h-5 {
+  height: 1.25rem;
+}
+.h-6 {
+  height: 1.5rem;
+}
+.h-8 {
+  height: 2rem;
+}
 .max-h-screen {
   max-height: 100vh;
+}
+.max-h-2 {
+  max-height: 0.5rem;
+}
+.max-h-10 {
+  max-height: 2.5rem;
+}
+.max-h-20 {
+  max-height: 5rem;
+}
+.max-h-full {
+  max-height: 100%;
 }
 .w-full {
   width: 100%;
@@ -630,6 +709,26 @@ select {
   margin-right: calc(0.5rem * var(--tw-space-x-reverse));
   margin-left: calc(0.5rem * calc(1 - var(--tw-space-x-reverse)));
 }
+.space-x-4 > :not([hidden]) ~ :not([hidden]) {
+  --tw-space-x-reverse: 0;
+  margin-right: calc(1rem * var(--tw-space-x-reverse));
+  margin-left: calc(1rem * calc(1 - var(--tw-space-x-reverse)));
+}
+.space-x-5 > :not([hidden]) ~ :not([hidden]) {
+  --tw-space-x-reverse: 0;
+  margin-right: calc(1.25rem * var(--tw-space-x-reverse));
+  margin-left: calc(1.25rem * calc(1 - var(--tw-space-x-reverse)));
+}
+.space-x-6 > :not([hidden]) ~ :not([hidden]) {
+  --tw-space-x-reverse: 0;
+  margin-right: calc(1.5rem * var(--tw-space-x-reverse));
+  margin-left: calc(1.5rem * calc(1 - var(--tw-space-x-reverse)));
+}
+.space-x-8 > :not([hidden]) ~ :not([hidden]) {
+  --tw-space-x-reverse: 0;
+  margin-right: calc(2rem * var(--tw-space-x-reverse));
+  margin-left: calc(2rem * calc(1 - var(--tw-space-x-reverse)));
+}
 .rounded-lg {
   border-radius: 0.5rem;
 }
@@ -642,9 +741,29 @@ select {
 .border {
   border-width: 1px;
 }
+.border-r-2 {
+  border-right-width: 2px;
+}
+.border-r-0 {
+  border-right-width: 0px;
+}
+.border-r {
+  border-right-width: 1px;
+}
+.border-r-4 {
+  border-right-width: 4px;
+}
 .border-gray-200 {
   --tw-border-opacity: 1;
   border-color: rgb(229 231 235 / var(--tw-border-opacity));
+}
+.border-\[\#E6E6E7\] {
+  --tw-border-opacity: 1;
+  border-color: rgb(230 230 231 / var(--tw-border-opacity));
+}
+.border-\[\#e4d\] {
+  --tw-border-opacity: 1;
+  border-color: rgb(238 68 221 / var(--tw-border-opacity));
 }
 .bg-success {
   --tw-bg-opacity: 1;
@@ -662,8 +781,23 @@ select {
   padding-top: 1rem;
   padding-bottom: 1rem;
 }
+.py-2 {
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
+}
+.py-5 {
+  padding-top: 1.25rem;
+  padding-bottom: 1.25rem;
+}
+.px-3 {
+  padding-left: 0.75rem;
+  padding-right: 0.75rem;
+}
 .pt-10 {
   padding-top: 2.5rem;
+}
+.pr-2 {
+  padding-right: 0.5rem;
 }
 .text-left {
   text-align: left;
@@ -715,6 +849,14 @@ select {
   --tw-text-opacity: 1;
   color: rgb(32 41 243 / var(--tw-text-opacity));
 }
+.text-\[\#E6E6E7\] {
+  --tw-text-opacity: 1;
+  color: rgb(230 230 231 / var(--tw-text-opacity));
+}
+.text-\[\#3e4\] {
+  --tw-text-opacity: 1;
+  color: rgb(51 238 68 / var(--tw-text-opacity));
+}
 .placeholder-dark::-moz-placeholder {
   --tw-placeholder-opacity: 1;
   color: rgb(128 129 137 / var(--tw-placeholder-opacity));
@@ -742,6 +884,22 @@ select {
 }
 .ease-in {
   transition-timing-function: cubic-bezier(0.4, 0, 1, 1);
+}
+.before\:border-r::before {
+  content: var(--tw-content);
+  border-right-width: 1px;
+}
+.after\:border-r::after {
+  content: var(--tw-content);
+  border-right-width: 1px;
+}
+.after\:border-r-2::after {
+  content: var(--tw-content);
+  border-right-width: 2px;
+}
+.after\:border-r-4::after {
+  content: var(--tw-content);
+  border-right-width: 4px;
 }
 .hover\:bg-hover-success:hover {
   --tw-bg-opacity: 1;

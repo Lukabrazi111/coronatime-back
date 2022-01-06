@@ -17,6 +17,11 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
 })->middleware('auth');
 
+// Testing route
+Route::get('/main-page', function () {
+    return view('main');
+})->name('main');
+
 // Route login
 Route::get('/login', function () {
     return view('login');
