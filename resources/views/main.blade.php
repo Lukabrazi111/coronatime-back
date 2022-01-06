@@ -10,8 +10,8 @@
             <div class="mb-12">
                 <nav class="navbar">
                     <ul class="flex space-x-14 border-b-2 pb-3">
-                        <li><a href="#" class="pb-4 border-b-black border-b-4 font-semibold text-lg">Worldwide</a></li>
-                        <li><a href="#" class="text-lg pb-4 hover:border-b-black hover:border-b-4">By
+                        <li><a href="{{ route('main') }}" class="pb-4 border-b-black border-b-4 font-semibold text-lg">Worldwide</a></li>
+                        <li><a href="{{ route('main.country') }}" class="text-lg pb-4 hover:border-b-black hover:border-b-4">By
                                 country</a></li>
                     </ul>
                 </nav>
@@ -67,7 +67,6 @@
                 </div>
 
             </div>
-
 
         </section>
     </x-container>

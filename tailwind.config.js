@@ -18,9 +18,10 @@ module.exports = {
                 emerald: colors.emerald,
                 indigo: colors.indigo,
                 yellow: colors.yellow,
-                dark: "#808189",
-                link: "#2029F3",
-                success: "#0FBA68",
+                "dark": "#808189",
+                "dark-black": "#010414",
+                "link": "#2029F3",
+                "success": "#0FBA68",
                 "hover-success": "#0da75c",
                 "brand-primary": "#2029F3",
                 "brand-secondary": "#0FBA68",
@@ -28,6 +29,9 @@ module.exports = {
             },
             spacing: {
                 75: "24.5rem",
+            },
+            maxWidth: {
+                "xss": "16rem",
             },
             opacity: {
                 7: "0.08",

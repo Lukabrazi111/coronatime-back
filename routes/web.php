@@ -22,6 +22,11 @@ Route::get('/main-page', function () {
     return view('main');
 })->name('main');
 
+// Testing route
+Route::get('/main-by-country', function () {
+    return view('main-by-country');
+})->name('main.country');
+
 // Route login
 Route::get('/login', function () {
     return view('login');
