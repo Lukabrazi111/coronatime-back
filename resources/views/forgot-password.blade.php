@@ -1,5 +1,5 @@
 <x-layout>
-    <main class="flex justify-center w-full max-h-screen font-intern">
+    <main class="flex justify-center w-full max-h-screen font-intern pb-6">
         <div class="flex flex-col py-10 px-4 w-full">
             <div class="mb-12 min-w-full flex flex-col justify-center items-center text-center">
                 <div class="mb-32">
