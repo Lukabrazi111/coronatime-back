@@ -22,6 +22,15 @@ module.exports = {
                 link: "#2029F3",
                 success: "#0FBA68",
                 "hover-success": "#0da75c",
+                "brand-primary": "#2029F3",
+                "brand-secondary": "#0FBA68",
+                "brand-tertiary": "#EAD621",
+            },
+            spacing: {
+                75: "24.5rem",
+            },
+            opacity: {
+                7: "0.08",
             },
             borderRadius: {
                 4: "0.25rem",

@@ -3,7 +3,9 @@
     {{-- Header --}}
     <x-header>
         <div class="header__inner">
-            <img src="{{ asset('img/Group 1.png') }}" alt="coronaImg">
+            <a href="#">
+                <img src="{{ asset('img/Group 1.png') }}" alt="coronaImg">
+            </a>
         </div>
         <div class="flex items-center space-x-8">
             <div>
@@ -17,13 +19,19 @@
                     </li>
                 </ul>
             </div>
-            <div class="flex items-center space-x-4">
+            <div class="hidden md:flex items-center space-x-4">
                 <p class="font-semibold">Takeshi K. </p>
-                <span class="border-[#E6E6E7] border-r h-8 max-h-full"></span>
+                <span class="border-r h-8 max-h-full"></span>
             </div>
 
-            <div>
+            <div class="hidden md:block">
                 <a href="#" class="text-black">Log Out</a>
+            </div>
+
+            <div class="md:hidden block">
+                <a href="#" class="block p-3">
+                    <img src="{{ asset('img/vectors/Hamburger vector.png') }}" alt="">
+                </a>
             </div>
         </div>
     </x-header>
