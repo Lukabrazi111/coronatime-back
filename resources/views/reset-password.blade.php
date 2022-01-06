@@ -12,14 +12,19 @@
 
                 {{-- Form --}}
                 <form action="#" method="post" class="flex flex-col mt-4 w-full max-w-lg">
-                    <label for="username" class="mb-2 text-left font-semibold">Email</label>
+                    <label for="username" class="mb-2 text-left font-semibold">New password</label>
                     <input class="px-4 py-4 rounded-lg border border-gray-200 mb-6 placeholder-dark" type="text"
-                        name="email" placeholder="Enter your email">
+                        name="email" placeholder="Enter new password">
+
+                    <label for="username" class="mb-2 text-left font-semibold">Repeat password</label>
+                    <input class="px-4 py-4 rounded-lg border border-gray-200 mb-6 placeholder-dark" type="text"
+                        name="repeat_password" placeholder="Repeat password">
 
                     <div>
                         <button type="submit"
                             class="py-4 transition duration-150 ease-in text-white font-semibold
-                                 uppercase hover:bg-hover-success bg-success my-5 w-full rounded-md">Reset Password</button>
+                                 uppercase hover:bg-hover-success bg-success my-5 w-full rounded-md">Save
+                            Changes</button>
                     </div>
                 </form>
             </div>

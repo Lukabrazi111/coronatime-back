@@ -13,14 +13,36 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+// Redirect if user not logged in
+Route::get('/', function () {
+})->middleware('auth');
+
+// Route login
 Route::get('/login', function () {
     return view('login');
 })->name('login');
 
+// Route register
 Route::get('/register', function () {
     return view('register');
 })->name('register');
 
+// Route forgot-password
 Route::get('/forgot-password', function () {
     return view('forgot-password');
 })->name('forgot.password');
+
+// Route reset-password
+Route::get('/reset-password', function () {
+    return view('reset-password');
+})->name('reset.password');
+
+// Route password-changed
+Route::get('/password-changed', function () {
+    return view('password-changed');
+})->name('password.changed');
+
+// Route account-confirm
+Route::get('/account-confirmed', function () {
+    return view('account-confirmed');
+})->name('account.confirmed');
