@@ -5,7 +5,6 @@ namespace App\Http\Livewire;
 use App\Models\User;
 use Illuminate\Support\Facades\Hash;
 use Livewire\Component;
-use Session;
 
 class Register extends Component
 {
@@ -13,6 +12,7 @@ class Register extends Component
     public $email;
     public $password;
     public $password_confirmation;
+    public $remember;
 
     public function mount(User $user)
     {
@@ -41,11 +41,16 @@ class Register extends Component
     {
         $this->validate();
 
-        User::create([
+        $user = User::create([
             'name' => $this->username,
             'email' => $this->email,
             'password' => Hash::make($this->password),
         ]);
+
+        if (auth()->attempt(
+            request()->only(['name', 'email', 'password']),
+            request()->filled($this->remember),
+        ));
 
         return redirect()->route('login');
     }
