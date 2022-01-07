@@ -5,6 +5,7 @@ namespace App\Http\Livewire;
 use App\Models\User;
 use Illuminate\Support\Facades\Hash;
 use Livewire\Component;
+use Session;
 
 class Register extends Component
 {
