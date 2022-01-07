@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Livewire\Register;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -36,6 +37,8 @@ Route::get('/login', function () {
 Route::get('/register', function () {
     return view('register');
 })->name('register');
+
+Route::post('register', [Register::class, 'register']);
 
 // Route forgot-password
 Route::get('/forgot-password', function () {
