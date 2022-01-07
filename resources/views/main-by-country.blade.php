@@ -35,7 +35,7 @@
 
             {{-- Table --}}
             <div class="flex flex-col">
-                <div class="">
+                <div>
                     <div class="border-b border-gray-200 shadow-lg">
                         <table class="divide-y divide-gray-300 w-full text-center">
                             <thead class="bg-gray-50">

@@ -50,7 +50,7 @@
 
         {{-- Main page image --}}
         <div>
-            <img class="h-screen md:block hidden" src="{{ asset('img/Rectangle 1.png') }}" alt="capsuleImg">
+            <img class="h-screen bg-cover hidden md:flex" src="{{ asset('img/Rectangle 1.png') }}" alt="capsuleImg">
         </div>
     </main>
 </x-layout>
