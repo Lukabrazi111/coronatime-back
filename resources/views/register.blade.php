@@ -7,7 +7,7 @@
             </div>
             <div>
                 <h1 class="text-2xl font-bold mb-2">Welcome to Coronatime</h1>
-                <h2 class="text-xl font-normal text-dark">Please enter required info to sign up</h1>
+                <h2 class="text-xl font-normal text-dark">Please enter required info to sign up</h2>
             </div>
             {{-- Form --}}
             <livewire:register />

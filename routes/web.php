@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Livewire\Register;
+use App\Mail\UserRegisteredMail;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -39,6 +40,11 @@ Route::get('/register', function () {
 })->name('register');
 
 Route::post('register', [Register::class, 'register']);
+
+//////////////////test register mail
+Route::get('/email', function () {
+    return new UserRegisteredMail();
+});
 
 // Route forgot-password
 Route::get('/forgot-password', function () {

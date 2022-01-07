@@ -41,12 +41,13 @@ class Register extends Component
     {
         $this->validate();
 
-        $user = User::create([
+        User::create([
             'name' => $this->username,
             'email' => $this->email,
             'password' => Hash::make($this->password),
         ]);
 
+        // Remember token
         if (auth()->attempt(
             request()->only(['name', 'email', 'password']),
             request()->filled($this->remember),
