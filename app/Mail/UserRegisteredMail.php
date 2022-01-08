@@ -11,14 +11,16 @@ class UserRegisteredMail extends Mailable
 {
     use Queueable, SerializesModels;
 
+    public $user;
+
     /**
      * Create a new message instance.
      *
      * @return void
      */
-    public function __construct()
+    public function __construct($user)
     {
-        //
+        $this->user = $user;
     }
 
     /**
@@ -28,10 +30,7 @@ class UserRegisteredMail extends Mailable
      */
     public function build()
     {
-        $image = env('APP_NAME')."/img/email/Landing.png";
-
-        return $this->markdown('emails.user-registered')
-            ->subject('Hello there')
-            ->with(['image' => $image]);
+        return $this->markdown('emails.user-registered', ['user' => $this->user])
+            ->subject('Hello there');
     }
 }

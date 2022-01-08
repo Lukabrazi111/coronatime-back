@@ -2,11 +2,17 @@
 
 namespace App\Http\Livewire;
 
+use App\Http\Controllers\MailController;
 use App\Mail\UserRegisteredMail;
 use App\Models\User;
+use App\Models\VerifyUser;
+use Carbon\Carbon;
+use Illuminate\Auth\Events\Registered;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Mail;
 use Livewire\Component;
+use Illuminate\Support\Str;
 
 class Register extends Component
 {
@@ -39,31 +45,47 @@ class Register extends Component
         ]);
     }
 
-    public function register()
+    public function store()
     {
         $this->validate();
 
-        Mail::to($this->email)->send(new UserRegisteredMail);
-
-        if (Mail::failures()!=0) {
-            return "Email has been send successfully!";
-        } else {
-            return "Oops something goes wrong!";
-        }
-
-        User::create([
+        $user = User::create([
             'name' => $this->username,
             'email' => $this->email,
             'password' => Hash::make($this->password),
         ]);
 
+        VerifyUser::create([
+            'token' => Str::random(60),
+            'user_id' => $user->id,
+        ]);
+        
+        Mail::to($user->email)->send(new UserRegisteredMail($user));
+
         // Remember token
-        if (auth()->attempt(
-            request()->only(['name', 'email', 'password']),
-            request()->filled($this->remember),
-        ));
+        // if (auth()->attempt(
+        //     request()->only(['name', 'email', 'password']),
+        //     request()->filled($this->remember),
+        // ));
 
         return redirect()->route('login');
+    }
+
+    public function verifyEmail($token)
+    {
+        $verifiedUser = VerifyUser::where('token', $token)->first();
+
+        if (isset($verifiedUser)) {
+            $user = $verifiedUser->user;
+
+            if (!$user->email_verified_at) {
+                $user->email_verified_at = Carbon::now();
+                $user->save();
+                return redirect()->route('login')->with('success_message', 'Your email has been verified!');
+            } else {
+                return redirect()->back()->with('error_message', 'Your email has already been verified!');
+            }
+        }
     }
 
     public function render()

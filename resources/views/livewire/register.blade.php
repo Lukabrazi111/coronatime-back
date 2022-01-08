@@ -1,4 +1,4 @@
-<form wire:submit.prevent='register' action="#" method="post" class="flex flex-col w-full mt-4 md:w-6/12">
+<form wire:submit.prevent='store' action="#" method="post" class="flex flex-col w-full mt-4 md:w-6/12">
     @csrf
 
     <div class="flex flex-col relative">
@@ -45,8 +45,7 @@
 
     <div class="flex flex-col relative">
         <label for="password" class="mb-2">Password</label>
-        <input wire:model='password'
-            class="px-4 py-4 rounded-lg border @error('password') border-red-600 @enderror border-gray-200 mb-2 placeholder-dark"
+        <input wire:model='password' class="px-4 py-4 rounded-lg border @if ($username) @error('username') border-red-600 @else border-green-600 @enderror @else border-gray-200 @endif mb-2 placeholder-dark"
             type="password" name="password" id="password" placeholder="Fill in password">
 
         @error('password')

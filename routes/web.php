@@ -3,6 +3,8 @@
 use App\Http\Livewire\Register;
 use App\Mail\UserRegisteredMail;
 use App\Models\User;
+use Illuminate\Auth\Events\Registered;
+use Illuminate\Foundation\Auth\EmailVerificationRequest;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -17,7 +19,6 @@ use Illuminate\Support\Facades\Route;
 */
 
 // Testing route
-
 Route::middleware('auth')->group(function () {
     Route::get('/', function () {
         return view('main');
@@ -28,9 +29,6 @@ Route::middleware('auth')->group(function () {
     })->name('main.country');
 });
 
-Route::get('/email', function () {
-    return new UserRegisteredMail();
-});
 // Route login
 Route::get('/login', function () {
     return view('login');
@@ -41,7 +39,9 @@ Route::get('/register', function () {
     return view('register');
 })->name('register');
 
-Route::post('register', [Register::class, 'register']);
+Route::post('register', [Register::class, 'store']);
+
+Route::get('/user/verify/{token}', [Register::class, 'verifyEmail']);
 
 // Route forgot-password
 Route::get('/forgot-password', function () {
