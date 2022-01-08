@@ -2,6 +2,7 @@
 
 use App\Http\Livewire\Register;
 use App\Mail\UserRegisteredMail;
+use App\Models\User;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -15,20 +16,21 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-// Redirect if user not logged in
-Route::get('/', function () {
-})->middleware('auth');
-
 // Testing route
-Route::get('/main-page', function () {
-    return view('main');
-})->name('main');
 
-// Testing route
-Route::get('/main-by-country', function () {
-    return view('main-by-country');
-})->name('main.country');
+Route::middleware('auth')->group(function () {
+    Route::get('/', function () {
+        return view('main');
+    })->name('main');
 
+    Route::get('/by-country', function () {
+        return view('main-by-country');
+    })->name('main.country');
+});
+
+Route::get('/email', function () {
+    return new UserRegisteredMail();
+});
 // Route login
 Route::get('/login', function () {
     return view('login');
@@ -40,11 +42,6 @@ Route::get('/register', function () {
 })->name('register');
 
 Route::post('register', [Register::class, 'register']);
-
-//////////////////test register mail
-Route::get('/email', function () {
-    return new UserRegisteredMail();
-});
 
 // Route forgot-password
 Route::get('/forgot-password', function () {

@@ -28,6 +28,10 @@ class UserRegisteredMail extends Mailable
      */
     public function build()
     {
-        return $this->markdown('emails.user-registered');
+        $image = env('APP_NAME')."/img/email/Landing.png";
+
+        return $this->markdown('emails.user-registered')
+            ->subject('Hello there')
+            ->with(['image' => $image]);
     }
 }

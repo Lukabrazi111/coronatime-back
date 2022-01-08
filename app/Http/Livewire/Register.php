@@ -2,8 +2,10 @@
 
 namespace App\Http\Livewire;
 
+use App\Mail\UserRegisteredMail;
 use App\Models\User;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Mail;
 use Livewire\Component;
 
 class Register extends Component
@@ -40,6 +42,14 @@ class Register extends Component
     public function register()
     {
         $this->validate();
+
+        Mail::to($this->email)->send(new UserRegisteredMail);
+
+        if (Mail::failures()!=0) {
+            return "Email has been send successfully!";
+        } else {
+            return "Oops something goes wrong!";
+        }
 
         User::create([
             'name' => $this->username,
