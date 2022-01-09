@@ -5,7 +5,7 @@
             <label for="username" class="mb-2">Username</label>
             <input wire:model='username'
                 class="px-4 py-4 rounded-lg border @if ($username) @error('username') border-red-600 @else border-green-600 @enderror @else border-gray-200 @endif mb-1 placeholder-dark" type="text"
-                name="username" placeholder="Enter unique username">
+                name="username" placeholder="Enter unique username or email">
         </div>
         @error('username')
             <span class="text-sm text-red-600 flex mb-2 mt-1">

@@ -47,8 +47,11 @@ class Login extends Component
     {
         $this->validate();
 
-        if (Auth::attempt(['name' => $this->username, 'password' => $this->password])) {
+        $fieldType = filter_var($this->username, FILTER_VALIDATE_EMAIL) ? 'email' : 'name';
+
+        if (Auth::attempt([$fieldType => $this->username, 'password' => $this->password])) {
             $user = Auth::user();
+
             // Check if email is verified
             if ($this->hasVerifiedAt($user)) {
                 session()->flash('success_message', 'You are logged in successfully');

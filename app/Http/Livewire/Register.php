@@ -6,6 +6,7 @@ use App\Http\Controllers\MailController;
 use App\Mail\UserRegisteredMail;
 use App\Models\User;
 use App\Models\VerifyUser;
+use Auth;
 use Carbon\Carbon;
 use Illuminate\Auth\Events\Registered;
 use Illuminate\Http\Request;
