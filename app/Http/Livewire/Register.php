@@ -61,14 +61,8 @@ class Register extends Component
         ]);
         
         Mail::to($user->email)->send(new UserRegisteredMail($user));
-
-        // Remember token
-        // if (auth()->attempt(
-        //     request()->only(['name', 'email', 'password']),
-        //     request()->filled($this->remember),
-        // ));
-
-        return redirect()->route('login');
+        
+        return redirect()->route('register')->with('success_message', 'We send you verification on email');
     }
 
     public function verifyEmail($token)

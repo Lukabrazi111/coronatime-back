@@ -17,5 +17,15 @@
         <div>
             <img class="h-screen bg-cover hidden md:flex" src="{{ asset('img/Rectangle 1.png') }}" alt="capsuleImg">
         </div>
+
+        @if (session()->has('success_message'))
+            <div x-data="{show:true}" x-show="show" x-init="
+                setTimeout(()=>{
+                    show = false;
+                }, 5000);
+            " class="animate-pulse fixed bottom-8 left-4 bg-success px-5 py-3 rounded-xl">
+                <span class="text-white">{{ session('success_message') }}</span>
+            </div>
+        @endif
     </main>
 </x-layout>

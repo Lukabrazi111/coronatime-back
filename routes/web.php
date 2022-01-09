@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Livewire\Login;
 use App\Http\Livewire\Register;
 use App\Mail\UserRegisteredMail;
 use App\Models\User;
@@ -19,20 +20,22 @@ use Illuminate\Support\Facades\Route;
 */
 
 // Testing route
-Route::middleware('auth')->group(function () {
-    Route::get('/', function () {
+Route::middleware('auth', 'verified')->group(function () {
+    Route::get('/dashboard', function () {
         return view('main');
-    })->name('main');
+    })->name('dashboard');
 
     Route::get('/by-country', function () {
         return view('main-by-country');
-    })->name('main.country');
+    })->name('dashboard.country');
 });
 
 // Route login
 Route::get('/login', function () {
     return view('login');
 })->name('login');
+
+Route::post('/login', [Login::class, 'store']);
 
 // Route register
 Route::get('/register', function () {
