@@ -24,6 +24,15 @@ class RegisterTest extends TestCase
     }
 
     /** @test */
+    public function user_cannot_view_a_register_form_when_authenticated()
+    {
+        $user = User::factory()->create();
+
+        $this->actingAs($user)->get('/register')
+            ->assertRedirect('/');
+    }
+
+    /** @test */
     public function register_page_validation_shows_errors()
     {
         Livewire::test(Register::class)
@@ -60,7 +69,7 @@ class RegisterTest extends TestCase
         $userExist = User::factory()->create([
             'name' => 'Lukabrazi123',
             'email' => 'luka@gmail.com',
-            'password' => 'luka123',
+            'password' => bcrypt('luka123'),
         ]);
 
         Livewire::test(Register::class)
@@ -80,7 +89,7 @@ class RegisterTest extends TestCase
         $userExist = User::factory()->create([
             'name' => 'Lukabrazi123',
             'email' => 'already@gmail.com',
-            'password' => 'luka123',
+            'password' => bcrypt('luka123'),
         ]);
 
         Livewire::test(Register::class)
