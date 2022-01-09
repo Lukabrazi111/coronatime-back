@@ -21,7 +21,7 @@ use Illuminate\Support\Facades\Route;
 
 // Testing route
 Route::middleware('auth', 'verified')->group(function () {
-    Route::get('/dashboard', function () {
+    Route::get('/', function () {
         return view('dashboard');
     })->name('dashboard');
 
