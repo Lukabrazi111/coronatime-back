@@ -2,14 +2,10 @@
 
 namespace App\Http\Livewire;
 
-use App\Http\Controllers\MailController;
 use App\Mail\UserRegisteredMail;
 use App\Models\User;
 use App\Models\VerifyUser;
-use Auth;
 use Carbon\Carbon;
-use Illuminate\Auth\Events\Registered;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Mail;
 use Livewire\Component;
@@ -60,7 +56,7 @@ class Register extends Component
             'token' => Str::random(60),
             'user_id' => $user->id,
         ]);
-        
+
         Mail::to($user->email)->send(new UserRegisteredMail($user));
 
         return redirect()->route('register')->with('success_message', 'We send you verification on email');
