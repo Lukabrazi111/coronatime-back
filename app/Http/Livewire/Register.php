@@ -61,7 +61,7 @@ class Register extends Component
         ]);
         
         Mail::to($user->email)->send(new UserRegisteredMail($user));
-        
+
         return redirect()->route('register')->with('success_message', 'We send you verification on email');
     }
 
@@ -75,9 +75,9 @@ class Register extends Component
             if (!$user->email_verified_at) {
                 $user->email_verified_at = Carbon::now();
                 $user->save();
-                return redirect()->route('login')->with('success_message', 'Your email has been verified!');
+                return redirect()->route('account.confirmed');
             } else {
-                return redirect()->back()->with('error_message', 'Your email has already been verified!');
+                return redirect()->route('login')->with('error_message', 'Your email has already been verified!');
             }
         }
     }
