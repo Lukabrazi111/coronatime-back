@@ -24,9 +24,10 @@
                 <span class="border-r h-8 max-h-full"></span>
             </div>
 
-            <div class="hidden md:block">
-                <a href="#" class="text-black">Log Out</a>
-            </div>
+            @auth
+                <livewire:logout />
+            @endauth
+
 
             <div class="md:hidden block">
                 <a href="#" class="block p-3">

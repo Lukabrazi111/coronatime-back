@@ -1,5 +1,5 @@
 <x-layout>
-    <x-main-header />
+    <x-dashboard-header />
 
     <x-container>
         <section class="section__content pt-12 px-4">

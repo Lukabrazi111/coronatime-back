@@ -30,7 +30,7 @@ Route::middleware('auth', 'verified')->group(function () {
     })->name('dashboard.country');
 });
 
-// Route::middleware('guest')->group(function () {
+Route::middleware('guest')->group(function () {
     // Route login
     Route::get('/login', function () {
         return view('login');
@@ -54,16 +54,16 @@ Route::middleware('auth', 'verified')->group(function () {
     Route::get('/reset-password', function () {
         return view('reset-password');
     })->name('reset.password');
-// });
+
+    // Route password-changed
+    Route::get('/password-changed', function () {
+        return view('password-changed');
+    })->name('password.changed');
+
+    // Route account-confirm
+    Route::get('/account-confirmed', function () {
+        return view('account-confirmed');
+    })->name('account.confirmed');
+});
 
 Route::get('/user/verify/{token}', [Register::class, 'verifyEmail']);
-
-// Route password-changed
-Route::get('/password-changed', function () {
-    return view('password-changed');
-})->name('password.changed');
-
-// Route account-confirm
-Route::get('/account-confirmed', function () {
-    return view('account-confirmed');
-})->name('account.confirmed');
