@@ -11,18 +11,27 @@
                 </div>
 
                 {{-- Form --}}
-                <form action="#" method="post" class="flex flex-col mt-4 w-full max-w-lg">
-                    <label for="username" class="mb-2 text-left font-semibold">Email</label>
-                    <input class="px-4 py-4 rounded-lg border border-gray-200 mb-6 placeholder-dark" type="text"
-                        name="email" placeholder="Enter your email">
-
-                    <div>
-                        <button type="submit"
-                            class="py-4 transition duration-150 ease-in text-white font-semibold
-                                 uppercase hover:bg-hover-success bg-success my-5 w-full rounded-md">Reset Password</button>
-                    </div>
-                </form>
+                <livewire:forgot-password />
             </div>
         </div>
+
+        @if (session()->has('error_message'))
+            <div x-data="{show:true}" x-show="show" x-init="
+                setTimeout(()=>{
+                    show = false;
+                }, 5000);
+            " class="animate-pulse fixed bottom-8 left-4 bg-red-500 px-5 py-3 rounded-xl">
+                <span class="text-white">{{ session('error_message') }}</span>
+            </div>
+        @endif
+        @if (session()->has('success_message'))
+            <div x-data="{show:true}" x-show="show" x-init="
+                setTimeout(()=>{
+                    show = false;
+                }, 5000);
+            " class="animate-pulse fixed bottom-8 left-4 bg-success px-5 py-3 rounded-xl">
+                <span class="text-white">{{ session('success_message') }}</span>
+            </div>
+        @endif
     </main>
 </x-layout>
