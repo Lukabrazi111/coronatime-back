@@ -3,6 +3,7 @@
 use App\Http\Livewire\ForgotPassword;
 use App\Http\Livewire\Login;
 use App\Http\Livewire\Register;
+use App\Http\Livewire\ResetPassword;
 use App\Mail\UserRegisteredMail;
 use App\Models\User;
 use Illuminate\Auth\Events\Registered;
@@ -54,9 +55,9 @@ Route::middleware('guest')->group(function () {
     Route::post('/forgot-password', [ForgotPassword::class, 'send'])->name('forgot-password.send');
 
     // Route reset-password
-    Route::get('/reset-password', function () {
+    Route::get('/reset-password/', function () {
         return view('reset-password');
-    })->name('reset.password');
+    })->name('password.reset');
 
     // Route password-changed
     Route::get('/password-changed', function () {
@@ -69,4 +70,4 @@ Route::middleware('guest')->group(function () {
     })->name('account.confirmed');
 });
 
-Route::get('/user/verify/{token}', [Register::class, 'verifyEmail']);
+Route::get('/user/verify/{token}', [Register::class, 'verifyEmail'])->name('verify.email');

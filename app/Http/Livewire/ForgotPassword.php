@@ -4,9 +4,12 @@ namespace App\Http\Livewire;
 
 use App\Mail\UserResetPasswordMail;
 use App\Models\User;
+use App\Models\VerifyUser;
 use Auth;
 use Livewire\Component;
 use Mail;
+use Mockery\Generator\StringManipulation\Pass\Pass;
+use Password;
 
 class ForgotPassword extends Component
 {
@@ -25,18 +28,16 @@ class ForgotPassword extends Component
     {
         $this->validate();
 
-        $checkEmail = User::where('email', '=', $this->email)->first();
+        $userEmail = User::where('email', '=', $this->email)->first();
 
-        if ($checkEmail === null) {
-            session()->flash('error_message', 'Please enter correct email!');
+        $status = Password::sendResetLink(['email' => $userEmail]);
+
+        if ($status === Password::RESET_LINK_SENT) {
+            back()->with(['status' => __($status)]);
+        } else {
+            session()->flash('error_message', 'Please enter valid email');
             return redirect()->route('forgot.password');
         }
-
-        session()->flash('success_message', 'Please check your email to reset a password');
-
-        Mail::to($this->email)->send(new UserResetPasswordMail);
-
-        return redirect()->route('forgot.password');
     }
 
     public function render()
