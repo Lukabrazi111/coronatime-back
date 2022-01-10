@@ -6,9 +6,12 @@ use App\Http\Livewire\Register;
 use App\Http\Livewire\ResetPassword;
 use App\Mail\UserRegisteredMail;
 use App\Models\User;
+use App\Notifications\PasswordReset;
 use Illuminate\Auth\Events\Registered;
 use Illuminate\Foundation\Auth\EmailVerificationRequest;
 use Illuminate\Support\Facades\Route;
+use Illuminate\Http\Request;
+use Illuminate\Support\Str;
 
 /*
 |--------------------------------------------------------------------------
@@ -55,9 +58,35 @@ Route::middleware('guest')->group(function () {
     Route::post('/forgot-password', [ForgotPassword::class, 'send'])->name('forgot-password.send');
 
     // Route reset-password
-    Route::get('/reset-password/', function () {
-        return view('reset-password');
-    })->name('password.reset');
+    Route::get('/reset-password/{token}', function ($token) {
+        return view('reset-password', ['token' => $token, 'email' => request()->email]);
+    })->name('reset-password.get');
+
+    Route::post('/reset-password', function (Request $request) {
+        $request->validate([
+            'token' => 'required',
+            'email' => 'required|email',
+            'password' => 'required|min:3|same:repeat_password',
+        ]);
+
+        $status = Password::reset(
+            $request->only('email', 'password', 'repeat_password', 'token'),
+            function ($user, $password) {
+                $user->forceFill([
+                    'password' => Hash::make($password)
+                ])->setRememberToken(Str::random(60));
+
+                $user->save();
+
+                event(new PasswordReset($user));
+            }
+        );
+
+
+        return $status === Password::PASSWORD_RESET
+                    ? redirect()->route('login')->with('status', __($status))
+                    : back()->withErrors(['email' => [__($status)]]);
+    })->name('reset-password.post');
 
     // Route password-changed
     Route::get('/password-changed', function () {

@@ -34,6 +34,8 @@ class ForgotPassword extends Component
 
         if ($status === Password::RESET_LINK_SENT) {
             back()->with(['status' => __($status)]);
+            session()->flash('success_message', 'Please check your email to reset password');
+            return redirect()->route('forgot.password');
         } else {
             session()->flash('error_message', 'Please enter valid email');
             return redirect()->route('forgot.password');

@@ -8,7 +8,7 @@ Recover password
 <p style="text-align: center; font-size: 18px; font-style:normal; color:black;">click this button to recover a password</p>
 <br>
 <div style="text-align: center;">
-<a href="{{ url('/user/reset-password/' . $user->user_id) }}" style="color:white; font-weight:900;
+<a href="{{ $actionUrl }}" style="color:white; font-weight:900;
 font-size:16px; background-color: #0fba68;
 padding: 15px 130px; border:none;
 border-radius:10px; margin: 0 auto; text-decoration:none; text-transform:uppercase;">Recover password</a>
