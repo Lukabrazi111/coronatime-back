@@ -778,6 +778,12 @@ select {
 .gap-4 {
   gap: 1rem;
 }
+.gap-2 {
+  gap: 0.5rem;
+}
+.gap-1 {
+  gap: 0.25rem;
+}
 .space-x-14 > :not([hidden]) ~ :not([hidden]) {
   --tw-space-x-reverse: 0;
   margin-right: calc(3.5rem * var(--tw-space-x-reverse));
@@ -1033,6 +1039,10 @@ select {
 .text-success {
   --tw-text-opacity: 1;
   color: rgb(15 186 104 / var(--tw-text-opacity));
+}
+.text-link {
+  --tw-text-opacity: 1;
+  color: rgb(32 41 243 / var(--tw-text-opacity));
 }
 .placeholder-dark::-moz-placeholder {
   --tw-placeholder-opacity: 1;

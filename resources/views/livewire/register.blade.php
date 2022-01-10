@@ -70,7 +70,7 @@
         @enderror
     </div>
 
-    <div>
+    <div class="flex items-center gap-1">
         <input wire:model='remember' type="checkbox" id="remember" name="remember"
             class="border border-gray-200 text-success transition duration-100 ease-in rounded-4 form-checkbox">
         <label class="ml-1" for="remember">Remember this device</label>
