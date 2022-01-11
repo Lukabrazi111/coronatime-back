@@ -16,7 +16,7 @@
                             <span><img class="ml-2" src="{{ asset('img/Stroke 165.png') }}"
                                     alt="arrowDown"></span>
                         </a>
-                        <div x-show="show" x-transition.top.duration.200ms
+                        <div x-show="show" x-transition.origin.top.duration.200ms
                             class="shadow-md w-36 absolute left-0 top-9 rounded-lg bg-gray-200 bg-opacity-75 text-black text-left">
                             <ul>
                                 <li>
@@ -37,11 +37,9 @@
                 <p class="font-semibold">Takeshi K. </p>
                 <span class="border-r h-8 max-h-full"></span>
             </div>
-
             @auth
                 <livewire:logout />
             @endauth
-
 
             <div class="md:hidden block">
                 <a href="#" class="block p-3">
