@@ -4,15 +4,7 @@ use App\Http\Controllers\ResetPasswordController;
 use App\Http\Livewire\ForgotPassword;
 use App\Http\Livewire\Login;
 use App\Http\Livewire\Register;
-use App\Http\Livewire\ResetPassword;
-use App\Mail\UserRegisteredMail;
-use App\Models\User;
-use App\Notifications\PasswordReset;
-use Illuminate\Auth\Events\Registered;
-use Illuminate\Foundation\Auth\EmailVerificationRequest;
 use Illuminate\Support\Facades\Route;
-use Illuminate\Http\Request;
-use Illuminate\Support\Str;
 
 /*
 |--------------------------------------------------------------------------
