@@ -11,7 +11,6 @@
                 </div>
 
                 {{-- Form --}}
-                {{-- <livewire:reset-password /> --}}
                 <form action="{{ route('reset-password.post') }}" method="post"
                     class="flex flex-col mt-4 w-full max-w-lg">
                     @csrf
