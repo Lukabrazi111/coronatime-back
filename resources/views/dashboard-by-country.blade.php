@@ -41,16 +41,65 @@
                         <thead class="bg-gray-200">
                             <tr class="whitespace-nowrap">
                                 <th class="md:w-64 md:p-5 py-5 pl-2 text-xs text-black md:rounded-tl-lg">
-                                    Location
+                                    <div class="flex gap-2">
+                                        Location
+                                        <div class="inline-flex flex-col items-center">
+                                            <a href="#">
+                                                <img class="mb-1" src="{{ asset('img/arrow-up.png') }}"
+                                                    alt="arrowUp">
+                                            </a>
+                                            <a href="#">
+                                                <img class="text-black" src="{{ asset('img/black-arrow.png') }}"
+                                                    alt="blackArrow">
+                                            </a>
+                                        </div>
+                                    </div>
                                 </th>
                                 <th class="md:w-64 text-xs text-black">
-                                    New cases
+                                    <div class="flex gap-2">
+                                        New cases
+                                        <div class="inline-flex flex-col items-center">
+                                            <a href="#">
+                                                <img class="mb-1" src="{{ asset('img/arrow-up.png') }}"
+                                                    alt="arrowUp">
+                                            </a>
+                                            <a href="#">
+                                                <img class="text-black" src="{{ asset('img/black-arrow.png') }}"
+                                                    alt="blackArrow">
+                                            </a>
+                                        </div>
+                                    </div>
                                 </th>
                                 <th class="md:w-64 text-xs text-black">
-                                    Deaths
+                                    <div class="flex gap-2">
+                                        Deaths
+                                        <div class="inline-flex flex-col items-center">
+                                            <a href="#">
+                                                <img class="mb-1" src="{{ asset('img/arrow-up.png') }}"
+                                                    alt="arrowUp">
+                                            </a>
+                                            <a href="#">
+                                                <img class="text-black" src="{{ asset('img/black-arrow.png') }}"
+                                                    alt="blackArrow">
+                                            </a>
+                                        </div>
+                                    </div>
                                 </th>
                                 <th class="md:w-64 text-xs text-black">
-                                    Recovered
+                                    <div class="flex gap-2">
+
+                                        Recovered
+                                        <div class="inline-flex flex-col items-center">
+                                            <a href="#">
+                                                <img class="mb-1" src="{{ asset('img/arrow-up.png') }}"
+                                                    alt="arrowUp">
+                                            </a>
+                                            <a href="#">
+                                                <img class="text-black" src="{{ asset('img/black-arrow.png') }}"
+                                                    alt="blackArrow">
+                                            </a>
+                                        </div>
+                                    </div>
                                 </th>
                                 <th class="md:w-32 py-2 text-xs text-black"></th>
                                 <th class="md:w-32 py-2 text-xs text-black md:rounded-tr-lg"></th>
