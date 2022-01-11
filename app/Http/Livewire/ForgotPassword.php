@@ -37,7 +37,7 @@ class ForgotPassword extends Component
             session()->flash('success_message', 'Please check your email to reset password');
             return redirect()->route('forgot.password');
         } else {
-            session()->flash('error_message', 'Please enter valid email');
+            session()->flash('error_message', 'The selected email is invalid!');
             return redirect()->route('forgot.password');
         }
     }

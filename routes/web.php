@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\ResetPasswordController;
 use App\Http\Livewire\ForgotPassword;
 use App\Http\Livewire\Login;
 use App\Http\Livewire\Register;
@@ -62,31 +63,7 @@ Route::middleware('guest')->group(function () {
         return view('reset-password', ['token' => $token, 'email' => request()->email]);
     })->name('reset-password.get');
 
-    Route::post('/reset-password', function (Request $request) {
-        $request->validate([
-            'token' => 'required',
-            'email' => 'required|email',
-            'password' => 'required|min:3|same:repeat_password',
-        ]);
-
-        $status = Password::reset(
-            $request->only('email', 'password', 'repeat_password', 'token'),
-            function ($user, $password) {
-                $user->forceFill([
-                    'password' => Hash::make($password)
-                ])->setRememberToken(Str::random(60));
-
-                $user->save();
-
-                event(new PasswordReset($user));
-            }
-        );
-
-
-        return $status === Password::PASSWORD_RESET
-                    ? redirect()->route('login')->with('status', __($status))
-                    : back()->withErrors(['email' => [__($status)]]);
-    })->name('reset-password.post');
+    Route::post('/reset-password', [ResetPasswordController::class, 'store'])->name('reset-password.post');
 
     // Route password-changed
     Route::get('/password-changed', function () {
@@ -97,6 +74,6 @@ Route::middleware('guest')->group(function () {
     Route::get('/account-confirmed', function () {
         return view('account-confirmed');
     })->name('account.confirmed');
-});
 
-Route::get('/user/verify/{token}', [Register::class, 'verifyEmail'])->name('verify.email');
+    Route::get('/user/verify/{token}', [Register::class, 'verifyEmail'])->name('verify.email');
+});
