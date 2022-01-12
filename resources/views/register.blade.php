@@ -1,7 +1,7 @@
 <x-layout>
     {{-- Main --}}
     <main class="flex justify-between w-full max-h-screen font-intern">
-        <div class="flex flex-col py-10 px-4 w-full md:pl-32 md:w-7/12">
+        <div class="flex flex-col pt-10 px-4 w-full md:pl-32 md:w-7/12">
             <div class="mb-12">
                 <img src="{{ asset('img/Group 1.png') }}" alt="coronaImg">
             </div>
@@ -15,7 +15,7 @@
 
         {{-- Main page image --}}
         <div>
-            <img class="h-screen bg-cover hidden md:flex" src="{{ asset('img/Rectangle 1.png') }}" alt="capsuleImg">
+            <img class="h-screen hidden md:flex" src="{{ asset('img/Rectangle 1.png') }}" alt="capsuleImg">
         </div>
 
         @if (session()->has('success_message'))
