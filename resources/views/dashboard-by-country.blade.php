@@ -38,6 +38,7 @@
             <div class="flex flex-col">
                 <div class=" shadow-lg">
                     <table class="divide-y divide-gray-200 w-full text-left">
+                        {{-- Table head --}}
                         <thead class="bg-gray-200">
                             <tr class="whitespace-nowrap">
                                 <th class="md:w-64 md:p-5 py-5 pl-2 text-xs text-black md:rounded-tl-lg">
@@ -105,6 +106,7 @@
                                 <th class="md:w-32 py-2 text-xs text-black md:rounded-tr-lg"></th>
                             </tr>
                         </thead>
+                        {{-- Table body --}}
                         <tbody class="bg-white divide-y divide-gray-200">
                             <tr class="whitespace-nowrap">
                                 <td class="md:p-5 text-sm pl-2 text-black">
@@ -117,24 +119,6 @@
                                 </td>
                                 <td class="">
                                     <div class="text-sm text-black">3213</div>
-                                </td>
-                                <td class="py-4 text-sm text-black">
-                                    2021-1-12
-                                </td>
-                                <td class="py-4"></td>
-                                <td class="py-4"></td>
-                            </tr>
-                            <tr class="whitespace-nowrap">
-                                <td class="md:p-5 pl-2 text-sm text-black">
-                                    Albania
-                                </td>
-                                <td class="py-4">
-                                    <div class="text-sm text-gray-900">
-                                        Jon doe
-                                    </div>
-                                </td>
-                                <td class="py-4">
-                                    <div class="text-sm text-black">3214</div>
                                 </td>
                                 <td class="py-4 text-sm text-black">
                                     2021-1-12
