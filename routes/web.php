@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\CountryIndexController;
 use App\Http\Controllers\CountryStatisticsController;
+use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\ResetPasswordController;
 use App\Http\Livewire\ForgotPassword;
 use App\Http\Livewire\Login;
@@ -22,9 +23,7 @@ use Illuminate\Support\Facades\Route;
 
 // Testing route
 Route::middleware('auth', 'verified')->group(function () {
-    Route::get('/', function () {
-        return view('dashboard');
-    })->name('dashboard');
+    Route::get('/', [DashboardController::class, 'index'])->name('dashboard');
 
     Route::get('/by-country', [CountryStatisticsController::class, 'index'])->name('dashboard.country');
 });

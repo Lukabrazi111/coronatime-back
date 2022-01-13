@@ -31,7 +31,7 @@
                             </div>
 
                             <div>
-                                <h1 class="text-brand-primary font-black text-4xl">715,523</h1>
+                                <h1 class="text-brand-primary font-black text-4xl">{{ $confirmed }}</h1>
                             </div>
                         </div>
                     </div>
@@ -47,7 +47,7 @@
                             </div>
 
                             <div>
-                                <h1 class="text-brand-secondary font-black text-4xl">72,005</h1>
+                                <h1 class="text-brand-secondary font-black text-4xl">{{ $recovered }}</h1>
                             </div>
                         </div>
                     </div>
@@ -63,7 +63,7 @@
                             </div>
 
                             <div>
-                                <h1 class="text-brand-tertiary font-black text-4xl">8,332</h1>
+                                <h1 class="text-brand-tertiary font-black text-4xl">{{ $deaths }}</h1>
                             </div>
                         </div>
                     </div>
