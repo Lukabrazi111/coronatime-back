@@ -34,7 +34,7 @@
                 </ul>
             </div>
             <div class="hidden md:flex items-center space-x-4">
-                <p class="font-semibold">Takeshi K. </p>
+                <p class="font-semibold">{{ auth()->user()->name }}</p>
                 <span class="border-r h-8 max-h-full"></span>
             </div>
             @auth

@@ -10,7 +10,6 @@ class CountryStatistics extends Model
 {
     use HasFactory, HasTranslations;
 
-
     public $translatable = ['name'];
 
     protected $guarded = [];
