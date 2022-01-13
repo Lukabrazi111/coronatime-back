@@ -15,7 +15,7 @@ class CreateCountryStatisticsTable extends Migration
     {
         Schema::create('country_statistics', function (Blueprint $table) {
             $table->id();
-            $table->string('country');
+            $table->text('name');
             $table->string('code');
             $table->unsignedBigInteger('confirmed');
             $table->unsignedBigInteger('recovered');

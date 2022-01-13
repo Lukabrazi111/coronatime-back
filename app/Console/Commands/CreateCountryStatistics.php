@@ -39,29 +39,28 @@ class CreateCountryStatistics extends Command
      */
     public function handle()
     {
-        $countries = new CountryStatistics();
-        $response = Http::get('https://devtest.ge/countries');
-
-        foreach ($response->json() as $element) {
+        $file = Http::get('https://devtest.ge/countries')->body();
+        $data = json_decode($file);
+        foreach ($data as $country) {
+            $response = Http::asForm()->post('https://devtest.ge/get-country-statistics', [
+                'code' => $country->code,
+            ]);
             sleep(2);
-
-            $countryName = json_encode($element['name']);
-            $countryCode = json_encode($element['code']);
-
-            $stats = Http::post('https://devtest.ge/get-country-statistics', $element);
-
-            $decodedStats = json_decode($stats);
-
-            dd($decodedStats);
-
-            $country = [
-                'name' => $countryName,
-                'code' => $countryCode,
-                'confirmed' => $decodedStats->confirmed,
-                'recovered' => $decodedStats->recovered,
-                'critical' => $decodedStats->critical,
-                'deaths' => $decodedStats->deaths,
+            $res = json_decode($response);
+            $translations = [
+                'en' => $country->name->en,
+                'ka' => $country->name->ka,
             ];
+            CountryStatistics::updateOrCreate(
+                [
+                    'code'      => $res->code,
+                    'name'      => $translations,
+                    'confirmed' => $res->confirmed,
+                    'recovered' => $res->recovered,
+                    'critical'  => $res->critical,
+                    'deaths'    => $res->deaths,
+                ]
+            );
         }
 
         $this->info('You synchronized info successfully');
