@@ -10,6 +10,8 @@ class CountryStatisticsController extends Controller
 {
     public function index()
     {
-        return view('dashboard-by-country');
+        $country = CountryStatistics::all();
+
+        return view('dashboard-by-country', ['country' => $country]);
     }
 }

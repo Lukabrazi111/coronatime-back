@@ -2,7 +2,7 @@
     <x-dashboard-header />
 
     <x-container>
-        <section class="section__content pt-12 md:px-4">
+        <section class="section__content pt-12 md:px-4 pb-10">
             <div class="px-4 md:px-0">
                 <div class="mb-8">
                     <h1 class="text-black text-2xl font-semibold">Statistics by country</h1>
@@ -36,8 +36,8 @@
 
             {{-- Table --}}
             <div class="flex flex-col">
-                <div class=" shadow-lg">
-                    <table class="divide-y divide-gray-200 w-full text-left">
+                <div class=" shadow-lg overflow-scroll" style="height: 47rem;">
+                    <table class="divide-y divide-gray-200 w-full text-left overflow-scroll">
                         {{-- Table head --}}
                         <thead class="bg-gray-200">
                             <tr class="whitespace-nowrap">
@@ -108,24 +108,26 @@
                         </thead>
                         {{-- Table body --}}
                         <tbody class="bg-white divide-y divide-gray-200">
-                            <tr class="whitespace-nowrap">
-                                <td class="md:p-5 text-sm pl-2 text-black">
-                                    Worldwide
-                                </td>
-                                <td class="">
-                                    <div class="text-sm text-black">
-                                        Jon doe
-                                    </div>
-                                </td>
-                                <td class="">
-                                    <div class="text-sm text-black">3213</div>
-                                </td>
-                                <td class="py-4 text-sm text-black">
-                                    2021-1-12
-                                </td>
-                                <td class="py-4"></td>
-                                <td class="py-4"></td>
-                            </tr>
+                            @foreach ($country as $item)
+                                <tr class="whitespace-nowrap">
+                                    <td class="md:p-5 text-sm pl-2 text-black">
+                                        {{ $item->name }}
+                                    </td>
+                                    <td class="">
+                                        <div class="text-sm text-black">
+                                            {{ $item->confirmed }}
+                                        </div>
+                                    </td>
+                                    <td class="">
+                                        <div class="text-sm text-black">{{ $item->deaths }}</div>
+                                    </td>
+                                    <td class="py-4 text-sm text-black">
+                                        {{ $item->recovered }}
+                                    </td>
+                                    <td class="py-4"></td>
+                                    <td class="py-4"></td>
+                                </tr>
+                            @endforeach
                         </tbody>
                     </table>
                 </div>

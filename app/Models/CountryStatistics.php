@@ -8,8 +8,8 @@ use Spatie\Translatable\HasTranslations;
 
 class CountryStatistics extends Model
 {
-    use HasFactory;
-    use HasTranslations;
+    use HasFactory, HasTranslations;
+
 
     public $translatable = ['name'];
 
