@@ -20,10 +20,10 @@ class DashboardController extends Controller
         }
 
         return view('dashboard', [
-            'confirmed' => strval($newCases),
-            'recovered' => $sumRecovered,
-            'critical' => $sumCritical,
-            'deaths' => $sumDeaths,
+            'confirmed' => strval(number_format($newCases)),
+            'recovered' => number_format($sumRecovered),
+            'critical' => number_format($sumCritical),
+            'deaths' => number_format($sumDeaths),
         ]);
     }
 }

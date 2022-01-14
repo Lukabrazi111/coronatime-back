@@ -25,7 +25,9 @@ use Illuminate\Support\Facades\Route;
 Route::middleware('auth', 'verified')->group(function () {
     Route::get('/', [DashboardController::class, 'index'])->name('dashboard');
 
-    Route::get('/by-country', [CountryStatisticsController::class, 'index'])->name('dashboard.country');
+    Route::get('/by-country', function () {
+        return view('dashboard-by-country');
+    })->name('dashboard.country');
 });
 
 Route::middleware('guest')->group(function () {
