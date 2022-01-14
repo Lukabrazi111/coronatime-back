@@ -29,7 +29,7 @@
                                 <li>
                                     <a href="{{ route(Route::currentRouteName(), 'ka') }}"
                                        class="text-left px-4 p-3 transition duration-150 ease-in hover:bg-gray-300 rounded w-full block">
-                                        Georgia
+                                        ქართული
                                     </a>
                                 </li>
                             </ul>

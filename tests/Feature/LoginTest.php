@@ -28,7 +28,7 @@ class LoginTest extends TestCase
         $user = User::factory()->create();
 
         $this->actingAs($user)->get('/login')
-            ->assertRedirect('/');
+            ->assertRedirect('/home');
     }
 
     /** @test */
@@ -103,6 +103,6 @@ class LoginTest extends TestCase
             ->set('username', $user->email)
             ->set('password', 'pwd123')
             ->call('store')
-            ->assertRedirect('/');
+            ->assertRedirect('/home');
     }
 }

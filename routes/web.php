@@ -20,14 +20,14 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::redirect('/', 'en');
+Route::redirect('/home', 'en');
 // Route dashboard
-Route::group(['prefix' => '{language}'], function () {
-    Route::get('/', [DashboardController::class, 'index'])->middleware('auth', 'verified')->name('dashboard');
+Route::group(['prefix' => '{language}', 'middleware' => 'auth'], function () {
+    Route::get('/home', [DashboardController::class, 'index'])->name('dashboard');
 
     Route::get('/by-country', function () {
         return view('dashboard-by-country');
-    })->middleware('auth', 'verified')->name('dashboard.country');
+    })->name('dashboard.country');
 });
 
 Route::middleware('guest')->group(function () {

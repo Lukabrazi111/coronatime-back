@@ -4,6 +4,7 @@ namespace App\Http\Middleware;
 
 use Closure;
 use Illuminate\Http\Request;
+use App;
 
 class SetLanguage
 {
@@ -16,7 +17,7 @@ class SetLanguage
      */
     public function handle(Request $request, Closure $next)
     {
-        \App::setLocale($request->language);
+        App::setLocale($request->language);
 
         return $next($request);
     }

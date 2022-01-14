@@ -17,7 +17,7 @@
         <table class="divide-y divide-gray-200 w-full text-left">
             {{-- Table head --}}
             <thead class="bg-gray-200">
-            <tr class="whitespace-nowrap">
+            <tr class="">
                 <th class="md:w-64 md:p-5 py-5 text-xs text-black md:rounded-tl-lg">
                     <div class="flex gap-2">
                         {{ __('Location') }}

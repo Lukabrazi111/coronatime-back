@@ -35,7 +35,7 @@
                 <label class="ml-1" for="remember">Remember this device</label>
             </div>
             <div>
-                <a class="hover:underline text-link" href="{{ route('forgot.password') }}">Forgot password?</a>
+                <a class="hover:underline text-link" href="{{ route('forgot.password', app()->getLocale()) }}">Forgot password?</a>
             </div>
         </div>
 
@@ -48,6 +48,6 @@
 
         <div class="flex items-center justify-center space-x-2">
             <p class="text-dark">Don't have an account?</p>
-            <a class="font-semibold hover:underline" href="{{ route('register') }}">Sign Up for free</a>
+            <a class="font-semibold hover:underline" href="{{ route('register', app()->getLocale()) }}">Sign Up for free</a>
         </div>
     </form>
