@@ -27,7 +27,7 @@ class CountryStatisticsLivewire extends Component
     public function render()
     {
         return view('livewire.country-statistics-livewire', [
-            'countries' => CountryStatistics::where('name', 'like', '%' . $this->search . '%')
+            'countries' => CountryStatistics::where('name->'.session()->get('locale', 'en'), 'like', '%' . $this->search . '%')
                 ->when($this->sortField, function ($query) {
                     return $query->orderBy(
                         $this->sortField === 'name' ?
@@ -35,11 +35,11 @@ class CountryStatisticsLivewire extends Component
                             $this->sortField,
                         $this->sortAsc ? 'asc' : 'desc',
                     );
-                })->when($this->sortField, function($query) {
+                })->when($this->sortField, function ($query) {
                     return $query->orderBy($this->sortAsc ? 'asc' : 'desc');
-                })->when($this->sortField, function($query) {
+                })->when($this->sortField, function ($query) {
                     return $query->orderBy($this->sortAsc ? 'asc' : 'desc');
-                })->when($this->sortField, function($query) {
+                })->when($this->sortField, function ($query) {
                     return $query->orderBy($this->sortAsc ? 'asc' : 'desc');
                 })->get(),
         ]);

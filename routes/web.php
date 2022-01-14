@@ -7,7 +7,6 @@ use App\Http\Controllers\ResetPasswordController;
 use App\Http\Livewire\ForgotPassword;
 use App\Http\Livewire\Login;
 use App\Http\Livewire\Register;
-use App\Models\CountryStatistics;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -21,13 +20,14 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-// Testing route
-Route::middleware('auth', 'verified')->group(function () {
-    Route::get('/', [DashboardController::class, 'index'])->name('dashboard');
+Route::redirect('/', 'en');
+// Route dashboard
+Route::group(['prefix' => '{language}'], function () {
+    Route::get('/', [DashboardController::class, 'index'])->middleware('auth', 'verified')->name('dashboard');
 
     Route::get('/by-country', function () {
         return view('dashboard-by-country');
-    })->name('dashboard.country');
+    })->middleware('auth', 'verified')->name('dashboard.country');
 });
 
 Route::middleware('guest')->group(function () {

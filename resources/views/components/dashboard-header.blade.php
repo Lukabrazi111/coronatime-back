@@ -14,19 +14,23 @@
                         <a @click="show = !show" href="#" class="flex items-center">
                             English
                             <span><img class="ml-2" src="{{ asset('img/Stroke 165.png') }}"
-                                    alt="arrowDown"></span>
+                                       alt="arrowDown"></span>
                         </a>
                         <div x-show="show" x-transition.origin.top.duration.200ms
-                            class="shadow-md w-36 absolute left-0 top-9 rounded-lg bg-gray-200 bg-opacity-75 text-black text-left">
+                             class="shadow-md w-36 absolute left-0 top-9 rounded-lg bg-gray-200 bg-opacity-75 text-black">
                             <ul>
                                 <li>
-                                    <a href="#"
-                                        class="px-4 p-3 transition duration-150 ease-in hover:bg-gray-300 rounded w-full block">English</a>
+                                    <a href="{{ route(Route::currentRouteName(), 'en') }}"
+                                       class="text-left px-4 p-3 transition duration-150 ease-in hover:bg-gray-300 rounded w-full block">
+                                        English
+                                    </a>
                                 </li>
 
                                 <li>
-                                    <a href="#"
-                                        class="px-4 p-3 transition duration-150 ease-in hover:bg-gray-300 rounded w-full block">Georgia</a>
+                                    <a href="{{ route(Route::currentRouteName(), 'ka') }}"
+                                       class="text-left px-4 p-3 transition duration-150 ease-in hover:bg-gray-300 rounded w-full block">
+                                        Georgia
+                                    </a>
                                 </li>
                             </ul>
                         </div>
@@ -38,7 +42,7 @@
                 <span class="border-r h-8 max-h-full"></span>
             </div>
             @auth
-                <livewire:logout />
+                <livewire:logout/>
             @endauth
 
             <div class="md:hidden block">
