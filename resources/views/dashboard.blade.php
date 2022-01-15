@@ -2,23 +2,24 @@
     <x-dashboard-header />
 
     <x-container>
-        <section class="section__content pt-12 px-4">
+        <section class="section__content pt-12 px-4 pb-12">
             <div class="mb-8">
                 <h1 class="text-black text-2xl font-semibold">{{ __('Worldwide Statistics') }}</h1>
             </div>
 
             <div class="mb-12">
                 <nav class="navbar">
-                    <ul class="flex space-x-14 border-b-2 pb-3">
-                        <li><a href="{{ route('dashboard', app()->getLocale()) }}"
-                                class="pb-4 border-b-black border-b-4 font-semibold text-lg">{{ __('Worldwide') }}</a></li>
-                        <li><a href="{{ route('dashboard.country', app()->getLocale()) }}" class="text-lg pb-4">{{ __('By country') }}</a></li>
+                    <ul class="md:flex md:items-center md:space-x-14 space-y-2 md:space-y-0 md:border-b-2 md:pb-3">
+                        <li><a href="{{ route('dashboard') }}"
+                               class="md:pb-4 pb-1 border-b-2 border-b-black text-lg font-semibold md:border-b-black md:border-b-4">{{ __('Worldwide') }}</a></li>
+                        <li><a href="{{ route('dashboard.country') }}"
+                               class="text-lg md:pb-4">{{ __('By country') }}</a></li>
                     </ul>
                 </nav>
             </div>
 
             <div>
-                <div class="grid md:grid-cols-3 grid-cols-2 gap-4">
+                <div class="grid md:grid-cols-3 grid-cols-1 gap-4">
                     <div class="bg-brand-primary bg-opacity-7 rounded-xl md:col-span-1 col-span-full">
                         <div class="px-10 py-12 flex flex-col justify-center items-center space-y-6">
                             <div class="mb-4">
