@@ -17,11 +17,11 @@
         <table class="divide-y divide-gray-200 w-full text-left">
             {{-- Table head --}}
             <thead class="bg-gray-200">
-            <tr class="">
+            <tr>
                 <th class="md:w-64 md:p-5 py-5 text-xs text-black md:rounded-tl-lg">
-                    <div class="flex gap-2">
+                    <div class="flex inline-block gap-2">
                         {{ __('Location') }}
-                        <div class="inline-flex flex-col items-center">
+                        <div class="flex inline-flex flex-col items-center">
                             <button wire:click="sortBy('name')">
                                 <img class="mb-1" src="{{ asset('img/arrow-up.png') }}" alt="arrowUp">
                             </button>
@@ -33,9 +33,9 @@
                     </div>
                 </th>
                 <th class="md:w-64 text-xs text-black">
-                    <div class="flex gap-2">
+                    <div class="md:flex inline-block md:gap-2 break-all">
                         {{ __('New cases') }}
-                        <div class="inline-flex flex-col items-center">
+                        <div class="md:flex inline-flex flex-col items-center">
                             <button wire:click="sortBy('confirmed')">
                                 <img class="mb-1" src="{{ asset('img/arrow-up.png') }}" alt="arrowUp">
                             </button>
@@ -47,9 +47,9 @@
                     </div>
                 </th>
                 <th class="md:w-64 text-xs text-black">
-                    <div class="flex gap-2">
+                    <div class="md:flex inline-block md:gap-2 break-all">
                         {{ __('Deaths') }}
-                        <div class="inline-flex flex-col items-center">
+                        <div class="md:flex inline-flex flex-col items-center">
                             <button wire:click="sortBy('deaths')">
                                 <img class="mb-1" src="{{ asset('img/arrow-up.png') }}" alt="arrowUp">
                             </button>
@@ -61,9 +61,9 @@
                     </div>
                 </th>
                 <th class="md:w-64 text-xs text-black">
-                    <div class="flex gap-2">
+                    <div class="md:flex inline-block md:gap-2 break-all">
                         {{ __('Recovered') }}
-                        <div class="inline-flex flex-col items-center">
+                        <div class="md:flex inline-flex flex-col items-center">
                             <button wire:click="sortBy('recovered')" href="#">
                                 <img class="mb-1" src="{{ asset('img/arrow-up.png') }}" alt="arrowUp">
                             </button>
@@ -85,7 +85,7 @@
                     <td class="md:p-5 text-sm pl-2 text-black">
                         {{ $country->name }}
                     </td>
-                    <td class="">
+                    <td>
                         <div class="text-sm text-black">
                             {{ $country->confirmed }}
                         </div>
