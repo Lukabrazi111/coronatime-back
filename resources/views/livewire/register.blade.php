@@ -16,7 +16,7 @@
     @error('username')
         <span class="text-sm text-red-600 flex mb-2 mt-1">
             <img class="mr-1 w-5 h-5" src="{{ asset('img/validation/error-warning-fill.png') }}" alt="error">
-            {{ $message }}
+            {{ __($message) }}
         </span>
     @else
         <small class="text-dark mb-2 text-sm">{{ __('Username should be unique, min 3 symbols') }}</small>
@@ -38,7 +38,7 @@
         @error('email')
             <span class="text-sm text-red-600 flex mb-2 mt-1">
                 <img class="mr-1 w-5 h-5" src="{{ asset('img/validation/error-warning-fill.png') }}" alt="error">
-                {{ $message }}
+                {{ __($message) }}
             </span>
         @enderror
     </div>
@@ -51,7 +51,7 @@
         @error('password')
             <span class="text-sm text-red-600 flex mb-2 mt-1">
                 <img class="mr-1 w-5 h-5" src="{{ asset('img/validation/error-warning-fill.png') }}" alt="error">
-                {{ $message }}
+                {{ __($message) }}
             </span>
         @enderror
     </div>
@@ -65,7 +65,7 @@
         @error('password_confirmation')
             <span class="text-sm text-red-600 flex mb-2 mt-1">
                 <img class="mr-1 w-5 h-5" src="{{ asset('img/validation/error-warning-fill.png') }}" alt="error">
-                {{ $message }}
+                {{ __($message) }}
             </span>
         @enderror
     </div>

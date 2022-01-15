@@ -11,14 +11,14 @@
                 </div>
 
                 <div class="mb-14">
-                    <p>Your password has been updeted successfully</p>
+                    <p>{{ __('Your password has been updeted successfully') }}</p>
                 </div>
 
                 <div class="flex flex-col mt-4 w-full max-w-lg">
                         <a href="{{ route('login') }}"
                             class="py-4 cursor-pointer transition duration-150 ease-in text-white font-semibold
                                  uppercase hover:bg-hover-success bg-success my-5 w-full rounded-md">
-                            Sign In</a>
+                            {{ __('Sign In') }}</a>
                 </div>
             </div>
         </div>

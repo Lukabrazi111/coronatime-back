@@ -7,7 +7,7 @@
                 </div>
 
                 <div class="mb-8">
-                    <h1 class="font-semibold text-black text-2xl">Reset Password</h1>
+                    <h1 class="font-semibold text-black text-2xl">{{ __('Reset Password') }}</h1>
                 </div>
 
                 {{-- Form --}}
