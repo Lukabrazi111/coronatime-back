@@ -2,12 +2,13 @@
     {{-- Main --}}
     <main class="flex justify-between w-full max-h-screen font-intern pb-6">
         <div class="flex flex-col pt-10 px-4 w-full md:pl-32 md:w-7/12">
+
             <div class="mb-12">
                 <img src="{{ asset('img/Group 1.png') }}" alt="coronaImg">
             </div>
             <div>
-                <h1 class="text-2xl font-bold mb-2">Welcome back</h1>
-                <h2 class="text-xl font-normal text-dark">Welcome back! Please enter your details</h1>
+                <h1 class="text-2xl font-bold mb-2">{{ __('Welcome back') }}</h1>
+                <h2 class="text-xl font-normal text-dark">{{ __('Welcome back! Please enter your details') }}</h1>
             </div>
             {{-- Form --}}
             <livewire:login />

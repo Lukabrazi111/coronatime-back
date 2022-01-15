@@ -7,8 +7,11 @@
                 <img src="{{ asset('img/Group 1.png') }}" alt="coronaImg">
             </a>
         </div>
-        <div x-data="{show : false}" x-cloak class="flex items-center space-x-8">
-            <div class="relative">
+        <div class="flex items-center space-x-8">
+            <div
+                x-cloak
+                x-data="{ show : false }"
+                class="relative">
                 <ul @click.outside="show = false">
                     <li>
                         <a @click="show = !show" href="#" class="flex items-center">
@@ -20,14 +23,14 @@
                              class="shadow-md w-36 absolute left-0 top-9 rounded-lg bg-gray-200 bg-opacity-75 text-black">
                             <ul>
                                 <li>
-                                    <a href="{{ route(Route::currentRouteName(), 'en') }}"
+                                    <a href="{{ route('language.change', 'en') }}"
                                        class="text-left px-4 p-3 transition duration-150 ease-in hover:bg-gray-300 rounded w-full block">
                                         English
                                     </a>
                                 </li>
 
                                 <li>
-                                    <a href="{{ route(Route::currentRouteName(), 'ka') }}"
+                                    <a href="{{ route('language.change', 'ka') }}"
                                        class="text-left px-4 p-3 transition duration-150 ease-in hover:bg-gray-300 rounded w-full block">
                                         ქართული
                                     </a>

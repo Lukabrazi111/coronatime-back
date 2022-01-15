@@ -11,9 +11,9 @@
                 <div class="mb-12">
                     <nav class="navbar">
                         <ul class="flex space-x-14 border-b-2 pb-3">
-                            <li><a href="{{ route('dashboard', app()->getLocale()) }}"
+                            <li><a href="{{ route('dashboard') }}"
                                    class="pb-4 text-lg">{{ __('Worldwide') }}</a></li>
-                            <li><a href="{{ route('dashboard.country', app()->getLocale()) }}"
+                            <li><a href="{{ route('dashboard.country') }}"
                                    class="text-lg pb-4 font-semibold border-b-black border-b-4">{{ __('By country') }}</a></li>
                         </ul>
                     </nav>
