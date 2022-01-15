@@ -27,5 +27,14 @@
     "Enter your email": "შეიყვანეთ ელ-ფოსტა",
     "Repeat password": "გაიმეორეთ პაროლი",
     "Sign Up": "რეგისტრაცია",
-    "Already have an account?": "უკვე გაქვთ ანგარიში?"
+    "Already have an account?": "უკვე გაქვთ ანგარიში?",
+    "The username field is required.": "მომხმარებლის სახელის ველი აუცილებელია.",
+    "The password field is required.": "პაროლის ველი აუცილებელია.",
+    "The username must be at least 3 characters.": "მომხმარებლის სახელი უნდა შედგებოდეს მინიმუმ 3 სიმბოლოსგან.",
+    "The password must be at least 3 characters.": "პაროლი უნდა შედგებოდეს მინიმუმ 3 სიმბოლოსგან.",
+    "Invalid username or password": "არასწორი სახელი ან პაროლი",
+    "You are logged in successfully": "თქვენ წარმატებით ხართ შესული",
+    "You are logged out": "თქვენ გახვედით",
+    "We send you verification on email": "ჩვენ გამოგიგზავნით დადასტურებას ელექტრონული ფოსტით",
+    "Your email has already been verified!": "თქვენი ელფოსტა უკვე დადასტურებულია!"
 }

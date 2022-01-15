@@ -10,7 +10,7 @@
         @error('username')
             <span class="text-sm text-red-600 flex mb-2 mt-1">
                 <img class="mr-1 w-5 h-5" src="{{ asset('img/validation/error-warning-fill.png') }}" alt="error">
-                {{ $message }}
+                {{ __($message) }}
             </span>
         @enderror
 
@@ -23,7 +23,7 @@
             @error('password')
                 <span class="text-sm text-red-600 flex mb-2 mt-1">
                     <img class="mr-1 w-5 h-5" src="{{ asset('img/validation/error-warning-fill.png') }}" alt="error">
-                    {{ $message }}
+                    {{ __($message) }}
                 </span>
             @enderror
         </div>

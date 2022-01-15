@@ -5,12 +5,15 @@ namespace App\Http\Livewire;
 use App\Models\User;
 use Auth;
 use Livewire\Component;
-use Request;
 
 class Login extends Component
 {
     public $username;
     public $password;
+    protected $rules = [
+        'username' => 'required|min:3|max:255',
+        'password' => 'required',
+    ];
 
     public function mount(User $user)
     {
@@ -18,29 +21,12 @@ class Login extends Component
         $this->password = $user->password;
     }
 
-    protected $rules = [
-        'username' => 'required|min:3|max:255',
-        'password' => 'required',
-    ];
-
     public function updated($propertyName)
     {
         $this->validateOnly($propertyName, [
             'username' => 'required|min:3|max:255',
             'password' => 'required|min:3',
         ]);
-    }
-
-    public function resetFields()
-    {
-        $this->username = '';
-        $this->password = '';
-    }
-
-    // Check column {email_verified_at}
-    public function hasVerifiedAt(User $user)
-    {
-        return $user->hasVerifiedEmail();
     }
 
     public function store()
@@ -54,13 +40,25 @@ class Login extends Component
 
             // Check if email is verified
             if ($this->hasVerifiedAt($user)) {
-                session()->flash('success_message', 'You are logged in successfully');
-                return redirect()->route('dashboard');
+                session()->flash('success_message',);
+                return redirect()->route('dashboard')->with('success_message', __('You are logged in successfully'));
             }
         } else {
             $this->resetFields();
-            return redirect()->route('login')->with('error_message', 'Invalid username or password');
+            return redirect()->route('login')->with('error_message', __('Invalid username or password'));
         }
+    }
+
+    // Check column {email_verified_at}
+    public function hasVerifiedAt(User $user)
+    {
+        return $user->hasVerifiedEmail();
+    }
+
+    public function resetFields()
+    {
+        $this->username = '';
+        $this->password = '';
     }
 
     public function render()

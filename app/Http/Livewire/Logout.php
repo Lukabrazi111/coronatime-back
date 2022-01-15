@@ -10,7 +10,7 @@ class Logout extends Component
     public function logout()
     {
         Auth::logout();
-        session()->flash('success_message', 'You are logged out');
+        session()->flash('success_message', __('You are logged out'));
         return redirect()->route('login');
     }
 

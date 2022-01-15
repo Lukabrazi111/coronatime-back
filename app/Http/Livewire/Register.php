@@ -59,7 +59,7 @@ class Register extends Component
 
         Mail::to($user->email)->send(new UserRegisteredMail($user));
 
-        return redirect()->route('register')->with('success_message', 'We send you verification on email');
+        return redirect()->route('register')->with('success_message', __('We send you verification on email'));
     }
 
     public function verifyEmail($token)
@@ -74,7 +74,7 @@ class Register extends Component
                 $user->save();
                 return redirect()->route('account.confirmed');
             } else {
-                return redirect()->route('login')->with('error_message', 'Your email has already been verified!');
+                return redirect()->route('login')->with('error_message', __('Your email has already been verified!'));
             }
         }
     }
