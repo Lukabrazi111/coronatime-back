@@ -8,9 +8,9 @@ use Spatie\Translatable\HasTranslations;
 
 class CountryStatistics extends Model
 {
-    use HasFactory, HasTranslations;
+	use HasFactory, HasTranslations;
 
-    public $translatable = ['name'];
+	public $translatable = ['name'];
 
-    protected $guarded = [];
+	protected $guarded = [];
 }

@@ -7,41 +7,46 @@ use Livewire\Component;
 
 class CountryStatisticsLivewire extends Component
 {
-    public $search;
-    public $sortField;
-    public $sortAsc = true;
+	public $search;
 
-    protected $queryString = ['search'];
+	public $sortField;
 
-    public function sortBy($field)
-    {
-        if ($this->sortField === $field) {
-            $this->sortAsc = !$this->sortAsc;
-        } else {
-            $this->sortAsc = true;
-        }
+	public $sortAsc = true;
 
-        $this->sortField = $field;
-    }
+	protected $queryString = ['search'];
 
-    public function render()
-    {
-        return view('livewire.country-statistics-livewire', [
-            'countries' => CountryStatistics::where('name->'.session()->get('locale', 'en'), 'like', '%' . $this->search . '%')
-                ->when($this->sortField, function ($query) {
-                    return $query->orderBy(
-                        $this->sortField === 'name' ?
-                            $this->sortField . '->' . session()->get('locale', 'en') :
-                            $this->sortField,
-                        $this->sortAsc ? 'asc' : 'desc',
-                    );
-                })->when($this->sortField, function ($query) {
-                    return $query->orderBy($this->sortAsc ? 'asc' : 'desc');
-                })->when($this->sortField, function ($query) {
-                    return $query->orderBy($this->sortAsc ? 'asc' : 'desc');
-                })->when($this->sortField, function ($query) {
-                    return $query->orderBy($this->sortAsc ? 'asc' : 'desc');
-                })->get(),
-        ]);
-    }
+	public function sortBy($field)
+	{
+		if ($this->sortField === $field)
+		{
+			$this->sortAsc = !$this->sortAsc;
+		}
+		else
+		{
+			$this->sortAsc = true;
+		}
+
+		$this->sortField = $field;
+	}
+
+	public function render()
+	{
+		return view('livewire.country-statistics-livewire', [
+			'countries' => CountryStatistics::where('name->' . session()->get('locale', 'en'), 'like', '%' . $this->search . '%')
+				->when($this->sortField, function ($query) {
+					return $query->orderBy(
+						$this->sortField === 'name' ?
+							$this->sortField . '->' . session()->get('locale', 'en') :
+							$this->sortField,
+						$this->sortAsc ? 'asc' : 'desc',
+					);
+				})->when($this->sortField, function ($query) {
+					return $query->orderBy($this->sortAsc ? 'asc' : 'desc');
+				})->when($this->sortField, function ($query) {
+					return $query->orderBy($this->sortAsc ? 'asc' : 'desc');
+				})->when($this->sortField, function ($query) {
+					return $query->orderBy($this->sortAsc ? 'asc' : 'desc');
+				})->get(),
+		]);
+	}
 }

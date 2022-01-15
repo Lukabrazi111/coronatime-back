@@ -8,61 +8,67 @@ use Livewire\Component;
 
 class Login extends Component
 {
-    public $username;
-    public $password;
-    protected $rules = [
-        'username' => 'required|min:3|max:255',
-        'password' => 'required',
-    ];
+	public $username;
 
-    public function mount(User $user)
-    {
-        $this->username = $user->name;
-        $this->password = $user->password;
-    }
+	public $password;
 
-    public function updated($propertyName)
-    {
-        $this->validateOnly($propertyName, [
-            'username' => 'required|min:3|max:255',
-            'password' => 'required|min:3',
-        ]);
-    }
+	protected $rules = [
+		'username' => 'required|min:3|max:255',
+		'password' => 'required',
+	];
 
-    public function store()
-    {
-        $this->validate();
+	public function mount(User $user)
+	{
+		$this->username = $user->name;
+		$this->password = $user->password;
+	}
 
-        $fieldType = filter_var($this->username, FILTER_VALIDATE_EMAIL) ? 'email' : 'name';
+	public function updated($propertyName)
+	{
+		$this->validateOnly($propertyName, [
+			'username' => 'required|min:3|max:255',
+			'password' => 'required|min:3',
+		]);
+	}
 
-        if (Auth::attempt([$fieldType => $this->username, 'password' => $this->password])) {
-            $user = Auth::user();
+	public function store()
+	{
+		$this->validate();
 
-            // Check if email is verified
-            if ($this->hasVerifiedAt($user)) {
-                session()->flash('success_message',);
-                return redirect()->route('dashboard')->with('success_message', __('You are logged in successfully'));
-            }
-        } else {
-            $this->resetFields();
-            return redirect()->route('login')->with('error_message', __('Invalid username or password'));
-        }
-    }
+		$fieldType = filter_var($this->username, FILTER_VALIDATE_EMAIL) ? 'email' : 'name';
 
-    // Check column {email_verified_at}
-    public function hasVerifiedAt(User $user)
-    {
-        return $user->hasVerifiedEmail();
-    }
+		if (Auth::attempt([$fieldType => $this->username, 'password' => $this->password]))
+		{
+			$user = Auth::user();
 
-    public function resetFields()
-    {
-        $this->username = '';
-        $this->password = '';
-    }
+			// Check if email is verified
+			if ($this->hasVerifiedAt($user))
+			{
+				session()->flash('success_message', );
+				return redirect()->route('dashboard')->with('success_message', __('You are logged in successfully'));
+			}
+		}
+		else
+		{
+			$this->resetFields();
+			return redirect()->route('login')->with('error_message', __('Invalid username or password'));
+		}
+	}
 
-    public function render()
-    {
-        return view('livewire.login');
-    }
+	// Check column {email_verified_at}
+	public function hasVerifiedAt(User $user)
+	{
+		return $user->hasVerifiedEmail();
+	}
+
+	public function resetFields()
+	{
+		$this->username = '';
+		$this->password = '';
+	}
+
+	public function render()
+	{
+		return view('livewire.login');
+	}
 }

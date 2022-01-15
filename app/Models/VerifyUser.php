@@ -7,15 +7,15 @@ use Illuminate\Database\Eloquent\Model;
 
 class VerifyUser extends Model
 {
-    use HasFactory;
+	use HasFactory;
 
-    protected $fillable = [
-        'token',
-        'user_id',
-    ];
+	protected $fillable = [
+		'token',
+		'user_id',
+	];
 
-    public function user()
-    {
-        return $this->belongsTo(User::class);
-    }
+	public function user()
+	{
+		return $this->belongsTo(User::class);
+	}
 }

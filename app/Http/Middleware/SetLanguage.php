@@ -10,20 +10,24 @@ use Throwable;
 
 class SetLanguage
 {
-    /**
-     * Handle an incoming request.
-     *
-     * @param Request $request
-     * @param Closure(\Illuminate\Http\Request): (\Illuminate\Http\Response|\Illuminate\Http\RedirectResponse)  $next
-     * @return Response|RedirectResponse
-     */
-    public function handle(Request $request, Closure $next)
-    {
-        try {
-            app()->setLocale(session()->get('lang'));
-        } catch (Throwable $exception) {
-            report($exception);
-        }
-        return $next($request);
-    }
+	/**
+	 * Handle an incoming request.
+	 *
+	 * @param Request $request
+	 * @param Closure(\Illuminate\Http\Request): (\Illuminate\Http\Response|\Illuminate\Http\RedirectResponse)  $next
+	 *
+	 * @return Response|RedirectResponse
+	 */
+	public function handle(Request $request, Closure $next)
+	{
+		try
+		{
+			app()->setLocale(session()->get('lang'));
+		}
+		catch (Throwable $exception)
+		{
+			report($exception);
+		}
+		return $next($request);
+	}
 }
