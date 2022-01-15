@@ -15,7 +15,11 @@
                 <ul @click.outside="show = false">
                     <li>
                         <a @click="show = !show" href="#" class="flex items-center">
-                            English
+                            @if(session('lang') === 'en')
+                                English
+                            @else
+                                ქართული
+                            @endif
                             <span><img class="ml-2" src="{{ asset('img/Stroke 165.png') }}"
                                        alt="arrowDown"></span>
                         </a>
