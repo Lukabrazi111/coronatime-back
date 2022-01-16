@@ -44,15 +44,18 @@ class Login extends Component
 			// Check if email is verified
 			if ($this->hasVerifiedAt($user))
 			{
-				session()->flash('success_message', );
 				return redirect()->route('dashboard')->with('success_message', __('You are logged in successfully'));
+			}
+			else
+			{
+				return redirect()->route('login')->with('error_message', __('Please verify your account!'));
 			}
 		}
 		else
 		{
 			$this->resetFields();
-			return redirect()->route('login')->with('error_message', __('Invalid username or password'));
 		}
+		return redirect()->route('login')->with('error_message', __('Invalid username or password'));
 	}
 
 	// Check column {email_verified_at}
