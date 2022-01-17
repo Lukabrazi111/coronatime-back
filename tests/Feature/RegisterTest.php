@@ -6,8 +6,8 @@ use App\Http\Livewire\Register;
 use App\Models\User;
 use App\Models\VerifyUser;
 use Illuminate\Foundation\Testing\RefreshDatabase;
-use Illuminate\Support\Str;
 use Livewire\Livewire;
+use Str;
 use Tests\TestCase;
 
 class RegisterTest extends TestCase
@@ -15,7 +15,7 @@ class RegisterTest extends TestCase
 	use RefreshDatabase;
 
 	/** @test */
-	public function register_page_has_register_livewire_component()
+	public function test_register_page_has_register_livewire_component()
 	{
 		$this->get('/register')
 			->assertSeeLivewire('register')
@@ -23,16 +23,7 @@ class RegisterTest extends TestCase
 	}
 
 	/** @test */
-	public function user_cannot_view_a_register_form_when_authenticated()
-	{
-		$user = User::factory()->create();
-
-		$this->actingAs($user)->get('/register')
-			->assertRedirect('/');
-	}
-
-	/** @test */
-	public function register_page_validation_shows_errors()
+	public function test_register_page_validation_shows_errors()
 	{
 		Livewire::test(Register::class)
 			->set('username', '')
@@ -49,7 +40,7 @@ class RegisterTest extends TestCase
 	}
 
 	/** @test */
-	public function register_page_validation_shows_error_on_specific_input()
+	public function test_register_page_validation_shows_error_on_specific_input()
 	{
 		Livewire::test(Register::class)
 			->set('username', 'abcd')
@@ -63,7 +54,7 @@ class RegisterTest extends TestCase
 	}
 
 	/** @test */
-	public function register_page_validation_shows_error_if_username_already_exist()
+	public function test_register_page_validation_shows_error_if_username_already_exist()
 	{
 		$userExist = User::factory()->create([
 			'name'     => 'Lukabrazi123',
@@ -83,7 +74,7 @@ class RegisterTest extends TestCase
 	}
 
 	/** @test */
-	public function register_page_validation_shows_error_if_email_already_exist()
+	public function test_register_page_validation_shows_error_if_email_already_exist()
 	{
 		$userExist = User::factory()->create([
 			'name'     => 'Lukabrazi123',
@@ -103,7 +94,7 @@ class RegisterTest extends TestCase
 	}
 
 	/** @test */
-	public function register_page_validation_shows_error_must_match()
+	public function test_register_page_validation_shows_error_must_match()
 	{
 		Livewire::test(Register::class)
 			->set('username', 'somenickname')
@@ -117,7 +108,7 @@ class RegisterTest extends TestCase
 	}
 
 	/** @test */
-	public function register_page_validation_verification_was_successful()
+	public function test_register_page_validation_verification_was_successful()
 	{
 		Livewire::test(Register::class)
 			->set('username', 'somenickname')
@@ -134,7 +125,7 @@ class RegisterTest extends TestCase
 	}
 
 	/** @test */
-	public function register_page_validation_verification_was_successfully_send_to_email()
+	public function test_register_page_validation_verification_was_successfully_send_to_email()
 	{
 		Livewire::test(Register::class)
 			->set('username', 'somenickname')
@@ -147,9 +138,57 @@ class RegisterTest extends TestCase
 				'email'                 => 'required',
 				'password'              => 'required',
 				'password_confirmation' => 'required',
-			])->assertSessionHas('success_message');
+			])->assertSessionHas('success_message', 'We send you verification on email');
 	}
 
+	/** @test */
+	public function test_register_page_check_email_verification()
+	{
+		$user = User::factory()->unverified()->create();
 
+		VerifyUser::create([
+			'token'   => Str::random(100),
+			'user_id' => $user->id,
+		]);
 
+		Livewire::actingAs($user)->test(Register::class)
+			->call('verifyEmail', $user->email_verified_at);
+
+		$this->assertDatabaseHas('users', [
+			'email_verified_at' => null,
+		]);
+	}
+
+	/** @test */
+	public function test_register_page_email_can_be_verified()
+	{
+		$user = User::factory()->create();
+
+		VerifyUser::create([
+			'token'   => Str::random(100),
+			'user_id' => $user->id,
+		]);
+
+		Livewire::actingAs($user)->test(Register::class)
+			->call('verifyEmail', $user->email_verified_at);
+
+		$response = $this->get(route('verification.notice', $user->verifyUser->token));
+		$response->assertRedirect(route('login'));
+	}
+
+	/** @test */
+	public function test_register_page_email_verified_successfully()
+	{
+		$user = User::factory()->unverified()->create();
+
+		VerifyUser::create([
+			'token'   => Str::random(100),
+			'user_id' => $user->id,
+		]);
+
+		$response = $this->get(route('verification.notice', $user->verifyUser->token));
+		$this->assertTrue($user->fresh()->email_verified_at !== $user->email_verified_at);
+
+		$response->assertRedirect(route('account.confirmed'));
+	}
 }

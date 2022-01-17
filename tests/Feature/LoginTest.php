@@ -22,15 +22,6 @@ class LoginTest extends TestCase
 	}
 
 	/** @test */
-	public function user_cannot_view_a_login_form_when_authenticated()
-	{
-		$user = User::factory()->create();
-
-		$this->actingAs($user)->get('/login')
-			->assertRedirect('/');
-	}
-
-	/** @test */
 	public function login_page_validation_shows_errors()
 	{
 		Livewire::test(Login::class)
@@ -136,17 +127,16 @@ class LoginTest extends TestCase
 	public function login_user_is_not_verified()
 	{
 		$user = User::factory()->create([
-			'name'              => 'somename',
-			'email'             => 'someemail@gmail.com',
-			'password'          => bcrypt('pwd123'),
+			'name'              => 'luka',
+			'password'          => bcrypt('luka123'),
 			'email_verified_at' => null,
 		]);
 
 		Livewire::actingAs($user)->test(Login::class)
-			->set('username', $user->email)
-			->set('password', $user->password)
+			->set('username', 'luka')
+			->set('password', 'luka123')
 			->call('store')
 			->assertRedirect('/login')
-			->assertHasErrors('error_message');
+			->assertSessionHas('error_message', 'Please verify your account!');
 	}
 }
