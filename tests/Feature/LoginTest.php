@@ -131,4 +131,22 @@ class LoginTest extends TestCase
 			->call('store')
 			->assertRedirect('/dashboard');
 	}
+
+	/** @test */
+	public function login_user_is_not_verified()
+	{
+		$user = User::factory()->create([
+			'name'              => 'somename',
+			'email'             => 'someemail@gmail.com',
+			'password'          => bcrypt('pwd123'),
+			'email_verified_at' => null,
+		]);
+
+		Livewire::actingAs($user)->test(Login::class)
+			->set('username', $user->email)
+			->set('password', $user->password)
+			->call('store')
+			->assertRedirect('/login')
+			->assertHasErrors('error_message');
+	}
 }

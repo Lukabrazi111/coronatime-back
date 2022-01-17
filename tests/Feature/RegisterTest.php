@@ -2,10 +2,11 @@
 
 namespace Tests\Feature;
 
-use App\Http\Livewire\Login;
 use App\Http\Livewire\Register;
 use App\Models\User;
+use App\Models\VerifyUser;
 use Illuminate\Foundation\Testing\RefreshDatabase;
+use Illuminate\Support\Str;
 use Livewire\Livewire;
 use Tests\TestCase;
 
@@ -149,20 +150,6 @@ class RegisterTest extends TestCase
 			])->assertSessionHas('success_message');
 	}
 
-	/** @test */
-	public function register_user_verified_email_successfully()
-	{
-		$user = User::factory()->create([
-			'name'              => 'somename',
-			'password'          => 'somepwd',
-			'email'             => 'someemail@gmail.com',
-			'email_verified_at' => null,
-		]);
 
-		Livewire::actingAs($user)->test(Login::class)
-			->set('username', 'somename')
-			->set('password', 'somepwd')
-			->call('store')
-			->assertSessionHas('error_message');
-	}
+
 }
