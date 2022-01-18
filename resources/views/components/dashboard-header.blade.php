@@ -15,7 +15,7 @@
                 <ul @click.outside="show = false">
                     <li>
                         <a @click="show = !show" href="#" class="flex items-center">
-                            @if(session('lang') === 'en')
+                        @if(session('lang') === 'en')
                                 English
                             @else
                                 ქართული
