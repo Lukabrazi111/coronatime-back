@@ -6,7 +6,7 @@ use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Foundation\Testing\WithFaker;
 use Tests\TestCase;
 
-class LanguageControllerTest extends TestCase
+class LanguageTest extends TestCase
 {
     use RefreshDatabase;
 
