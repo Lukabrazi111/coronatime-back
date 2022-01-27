@@ -3,7 +3,6 @@
 namespace Tests\Feature;
 
 use App\Models\User;
-use Illuminate\Auth\Passwords\PasswordBroker;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Password;
@@ -15,7 +14,7 @@ class ResetPasswordTest extends TestCase
 	use RefreshDatabase;
 
 	/** @test */
-	public function test_show_password_reset_page()
+	public function show_password_reset_page()
 	{
 		$user = User::factory()->create();
 
@@ -32,7 +31,7 @@ class ResetPasswordTest extends TestCase
 	}
 
 	/** @test */
-	public function test_reset_password_validation()
+	public function reset_password_validation()
 	{
 		$this->post('/reset-password', [
 			'email'           => 'some@gmail.com',
@@ -43,7 +42,7 @@ class ResetPasswordTest extends TestCase
 	}
 
 	/** @test */
-	public function test_reset_password_request_invalid_email()
+	public function reset_password_request_invalid_email()
 	{
 		$this->followingRedirects()->from(route('reset-password.get', Str::random(60)))
 			->post(route('reset-password.post'), [
@@ -53,7 +52,7 @@ class ResetPasswordTest extends TestCase
 	}
 
 	/** @test */
-	public function test_reset_password_mismatch()
+	public function reset_password_mismatch()
 	{
 		$user = User::factory()->create([
 			'password' => bcrypt('pwd123'),
@@ -82,20 +81,20 @@ class ResetPasswordTest extends TestCase
 		$this->assertTrue(Hash::check('pwd123', $user->password));
 	}
 
-    /** @test */
-    public function user_can_change_their_password()
-    {
-        $user = User::factory()->create();
+	/** @test */
+	public function user_can_change_their_password()
+	{
+		$user = User::factory()->create();
 
-        $token = Password::broker()->createToken($user);
+		$token = Password::broker()->createToken($user);
 
-        $this->post(route('reset-password.post', [
-            'email'                 => $user->email,
-            'password'              => 'admin',
-            'repeat_password' => 'admin',
-            'token'                 => $token,
-        ]))->assertSessionHasNoErrors()
-            ->assertRedirect(route('password.changed'))
-            ->assertSessionHas('status', 'Your password has been reset!');
-    }
+		$this->post(route('reset-password.post', [
+			'email'           => $user->email,
+			'password'        => 'admin',
+			'repeat_password' => 'admin',
+			'token'           => $token,
+		]))->assertSessionHasNoErrors()
+			->assertRedirect(route('password.changed'))
+			->assertSessionHas('status', 'Your password has been reset!');
+	}
 }

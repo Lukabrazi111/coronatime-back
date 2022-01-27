@@ -15,7 +15,7 @@ class RegisterTest extends TestCase
 	use RefreshDatabase;
 
 	/** @test */
-	public function test_register_page_has_register_livewire_component()
+	public function register_page_has_register_livewire_component()
 	{
 		$this->get('/register')
 			->assertSeeLivewire('register')
@@ -23,7 +23,7 @@ class RegisterTest extends TestCase
 	}
 
 	/** @test */
-	public function test_register_page_validation_shows_errors()
+	public function register_page_validation_shows_errors()
 	{
 		Livewire::test(Register::class)
 			->set('username', '')
@@ -40,7 +40,7 @@ class RegisterTest extends TestCase
 	}
 
 	/** @test */
-	public function test_register_page_validation_shows_error_on_specific_input()
+	public function register_page_validation_shows_error_on_specific_input()
 	{
 		Livewire::test(Register::class)
 			->set('username', 'abcd')
@@ -54,7 +54,7 @@ class RegisterTest extends TestCase
 	}
 
 	/** @test */
-	public function test_register_page_validation_shows_error_if_username_already_exist()
+	public function register_page_validation_shows_error_if_username_already_exist()
 	{
 		$userExist = User::factory()->create([
 			'name'     => 'Lukabrazi123',
@@ -74,7 +74,7 @@ class RegisterTest extends TestCase
 	}
 
 	/** @test */
-	public function test_register_page_validation_shows_error_if_email_already_exist()
+	public function register_page_validation_shows_error_if_email_already_exist()
 	{
 		$userExist = User::factory()->create([
 			'name'     => 'Lukabrazi123',
@@ -94,7 +94,7 @@ class RegisterTest extends TestCase
 	}
 
 	/** @test */
-	public function test_register_page_validation_shows_error_must_match()
+	public function register_page_validation_shows_error_must_match()
 	{
 		Livewire::test(Register::class)
 			->set('username', 'somenickname')
@@ -108,7 +108,7 @@ class RegisterTest extends TestCase
 	}
 
 	/** @test */
-	public function test_register_page_validation_verification_was_successful()
+	public function register_page_validation_verification_was_successful()
 	{
 		Livewire::test(Register::class)
 			->set('username', 'somenickname')
@@ -125,7 +125,7 @@ class RegisterTest extends TestCase
 	}
 
 	/** @test */
-	public function test_register_page_validation_verification_was_successfully_send_to_email()
+	public function register_page_validation_verification_was_successfully_send_to_email()
 	{
 		Livewire::test(Register::class)
 			->set('username', 'somenickname')
@@ -142,7 +142,7 @@ class RegisterTest extends TestCase
 	}
 
 	/** @test */
-	public function test_register_page_check_email_verification()
+	public function register_page_check_email_verification()
 	{
 		$user = User::factory()->unverified()->create();
 
@@ -160,7 +160,7 @@ class RegisterTest extends TestCase
 	}
 
 	/** @test */
-	public function test_register_page_email_can_be_verified()
+	public function register_page_email_can_be_verified()
 	{
 		$user = User::factory()->create();
 
@@ -177,7 +177,7 @@ class RegisterTest extends TestCase
 	}
 
 	/** @test */
-	public function test_register_page_email_verified_successfully()
+	public function register_page_email_verified_successfully()
 	{
 		$user = User::factory()->unverified()->create();
 

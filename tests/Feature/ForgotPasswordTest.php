@@ -13,7 +13,7 @@ class ForgotPasswordTest extends TestCase
 	use RefreshDatabase;
 
 	/** @test */
-	public function test_forgot_password_page_has_livewire_component()
+	public function forgot_password_page_has_livewire_component()
 	{
 		$this->get(route('forgot.password'))
 			->assertSuccessful()
@@ -21,7 +21,7 @@ class ForgotPasswordTest extends TestCase
 	}
 
 	/** @test */
-	public function test_forgot_password_email_required_validation_works_properly()
+	public function forgot_password_email_required_validation_works_properly()
 	{
 		Livewire::test(ForgotPassword::class)
 			->set('email', '')
@@ -31,7 +31,7 @@ class ForgotPasswordTest extends TestCase
 	}
 
 	/** @test */
-	public function test_forgot_password_properly_email_check()
+	public function forgot_password_properly_email_check()
 	{
 		Livewire::test(ForgotPassword::class)
 			->set('email', 'dsaxdasx')
@@ -41,7 +41,7 @@ class ForgotPasswordTest extends TestCase
 	}
 
 	/** @test */
-	public function test_forgot_password_page_email_does_not_exist()
+	public function forgot_password_page_email_does_not_exist()
 	{
 		$user = User::factory()->create([
 			'name'  => 'luka',
@@ -60,7 +60,7 @@ class ForgotPasswordTest extends TestCase
 	}
 
 	/** @test */
-	public function test_forgot_password_page_email_exists()
+	public function forgot_password_page_email_exists()
 	{
 		$user = User::factory()->create([
 			'name'  => 'luka',

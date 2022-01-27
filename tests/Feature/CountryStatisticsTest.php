@@ -14,7 +14,7 @@ class CountryStatisticsTest extends TestCase
     use RefreshDatabase;
 
     /** @test */
-    public function test_dashboard_page_has_country_statistics_livewire_component()
+    public function dashboard_page_has_country_statistics_livewire_component()
     {
         $user = User::factory()->create();
         $this->actingAs($user)->get(route('dashboard.country'))
@@ -24,7 +24,7 @@ class CountryStatisticsTest extends TestCase
     }
 
     /** @test */
-    public function test_country_statistics_search_functionality()
+    public function country_statistics_search_functionality()
     {
         $user = User::factory()->create();
 
@@ -51,7 +51,7 @@ class CountryStatisticsTest extends TestCase
     }
 
     /** @test */
-    public function test_country_statistics_search_functionality_nothing_found()
+    public function country_statistics_search_functionality_nothing_found()
     {
         $countryOne = CountryStatistics::factory()->create([
             'name' => 'Afghanistan',
@@ -76,7 +76,7 @@ class CountryStatisticsTest extends TestCase
     }
 
     /** @test */
-    public function test_country_statistics_sorting_functionality()
+    public function country_statistics_sorting_functionality()
     {
         $countryOne = CountryStatistics::factory()->create([
             'name' => 'Albania',
