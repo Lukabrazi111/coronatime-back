@@ -47,18 +47,4 @@ class PasswordReset extends Notification
 			->action('Reset Password', $this->url)
 			->markdown('emails.user-reset-password');
 	}
-
-	/**
-	 * Get the array representation of the notification.
-	 *
-	 * @param mixed $notifiable
-	 *
-	 * @return array
-	 */
-	public function toArray($notifiable)
-	{
-		return [
-            //
-		];
-	}
 }
