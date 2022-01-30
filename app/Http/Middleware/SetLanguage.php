@@ -20,14 +20,12 @@ class SetLanguage
 	 */
 	public function handle(Request $request, Closure $next)
 	{
-		try
-		{
+		if(session('lang'))
+        {
 			app()->setLocale(session()->get('lang'));
+            app()->getLocale();
 		}
-		catch (Throwable $exception)
-		{
-			report($exception);
-		}
-		return $next($request);
+
+        return $next($request);
 	}
 }
