@@ -13,7 +13,7 @@ class CreateCountryStatistics extends Command
 	 *
 	 * @var string
 	 */
-	protected $signature = 'sync:statistics';
+	protected $signature = 'create:country-statistics';
 
 	/**
 	 * The console command description.
@@ -43,7 +43,7 @@ class CreateCountryStatistics extends Command
 
 		foreach ($countries as $country)
 		{
-			$response = Http::asForm()->post('https://devtest.ge/get-country-statistics', [
+			$response = Http::post('https://devtest.ge/get-country-statistics', [
 				'code' => $country['code'],
 			]);
 
