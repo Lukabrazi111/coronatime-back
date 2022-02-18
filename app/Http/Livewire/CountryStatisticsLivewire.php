@@ -31,7 +31,7 @@ class CountryStatisticsLivewire extends Component
 
 	public function render()
 	{
-		return view('livewire.country-statistics-livewire', [
+		return view('livewire.country-statistics', [
 			'countries' => CountryStatistics::where('name->' . session()->get('locale', 'en'), 'like', '%' . $this->search . '%')
 				->when($this->sortField, function ($query) {
 					return $query->orderBy(

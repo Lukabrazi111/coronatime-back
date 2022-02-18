@@ -49,7 +49,7 @@ class CreateCountryStatistics extends Command
 
 			sleep(2);
 
-			$result = json_decode($response);
+			$result = $response->json();
 
 			$translations = [
 				'en' => $country->name->en,
