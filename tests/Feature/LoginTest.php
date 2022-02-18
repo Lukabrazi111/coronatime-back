@@ -10,18 +10,18 @@ use Tests\TestCase;
 
 class LoginTest extends TestCase
 {
-    use RefreshDatabase;
+	use RefreshDatabase;
 
-    /** @test */
-    public function login_page_has_livewire_login_component()
-    {
-        $this->get('/login')
-            ->assertSuccessful()
-            ->assertSeeLivewire('login')
-            ->assertSeeText('Welcome back');
-    }
+	/** @test */
+	public function login_page_has_livewire_login_component()
+	{
+		$this->get('/login')
+			->assertSuccessful()
+			->assertSeeLivewire('login')
+			->assertSeeText('Welcome back');
+	}
 
-    /** @test */
+	/** @test */
 	public function login_page_validation_shows_errors()
 	{
 		Livewire::test(Login::class)

@@ -8,7 +8,6 @@ use App\Http\Livewire\Login;
 use App\Http\Livewire\Register;
 use Illuminate\Support\Facades\Route;
 
-
 Route::get('/lang/{lang}', [LanguageController::class, 'change'])->name('language.change');
 
 Route::fallback(function () {
@@ -29,8 +28,9 @@ Route::middleware(['auth', 'verified'])->group(function () {
 	})->name('dashboard.country');
 });
 
-// Route login
 Route::middleware('guest')->group(function () {
+	// Route login
+
 	Route::get('/login', function () {
 		return view('login');
 	})->name('login');
