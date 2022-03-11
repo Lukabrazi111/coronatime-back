@@ -44,13 +44,13 @@ class CreateCountryStatistics extends Command
 		foreach ($countries as $country)
 		{
 
-			$response = Http::post('https://devtest.ge/get-country-statistics', [
+			$result = Http::post('https://devtest.ge/get-country-statistics', [
 				'code' => $country['code'],
 			]);
 
 			sleep(2);
 
-			$result = $response->json();
+			$response = $result->json();
 
 			$translations = [
 				'en' => $country['name']['en'],
@@ -59,12 +59,12 @@ class CreateCountryStatistics extends Command
 
 			CountryStatistics::updateOrCreate(
 				[
-					'code'      => $result['code'],
+					'code'      => $response['code'],
 					'name'      => $translations,
-					'confirmed' => $result['confirmed'],
-					'recovered' => $result['recovered'],
-					'critical'  => $result['critical'],
-					'deaths'    => $result['deaths'],
+					'confirmed' => $response['confirmed'],
+					'recovered' => $response['recovered'],
+					'critical'  => $response['critical'],
+					'deaths'    => $response['deaths'],
 				]
 			);
 		}
