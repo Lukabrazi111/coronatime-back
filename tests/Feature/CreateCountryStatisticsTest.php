@@ -34,7 +34,7 @@ class CreateCountryStatisticsTest extends TestCase
 			'https://devtest.ge/get-country-statistics?code=' => Http::response($countryResult),
 		]);
 
-		$this->artisan('sync:statistics')->assertSuccessful();
+		$this->artisan('create:country-statistics')->assertSuccessful();
 
 		$this->assertDatabaseHas('country_statistics', ['id' => 1]);
 	}
