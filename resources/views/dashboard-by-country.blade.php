@@ -1,5 +1,5 @@
 <x-layout>
-    <x-dashboard-header />
+    <x-dashboard-header/>
 
     <x-container>
         <section class="section__content pt-12 md:px-4 pb-10">
@@ -14,7 +14,7 @@
                             <li><a href="{{ route('dashboard') }}" class="pb-4 text-lg">{{ __('Worldwide') }}</a>
                             </li>
                             <li><a href="{{ route('dashboard.country') }}"
-                                    class="md:pb-4 pb-1 border-b-2 border-b-black text-lg font-semibold md:border-b-black md:border-b-4">{{ __('By country') }}</a>
+                                   class="md:pb-4 pb-1 border-b-2 border-b-black text-lg font-semibold md:border-b-black md:border-b-4">{{ __('By country') }}</a>
                             </li>
                         </ul>
                     </nav>
@@ -22,7 +22,8 @@
             </div>
 
             {{-- Table --}}
-            <livewire:country-statistics-livewire />
+            <livewire:country-statistics-livewire/>
+        </section>
 
     </x-container>
 </x-layout>
