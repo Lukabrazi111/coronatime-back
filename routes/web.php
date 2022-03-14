@@ -11,22 +11,21 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/lang/{lang}', [LanguageController::class, 'change'])->name('language.change');
 
-//Route::fallback(function () {
-//	if (auth()->user())
-//	{
-//		return redirect()->route('dashboard');
-//	}
-//
-//	return redirect()->route('login');
-//});
+Route::fallback(function () {
+    if (auth()->user()) {
+        return redirect()->route('dashboard');
+    }
 
-//Route::middleware(['auth', 'verified'])->group(function () {
-Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
+    return redirect()->route('login');
+});
 
-Route::get('/by-country', function () {
-	return view('dashboard-by-country');
-})->name('dashboard.country');
-//});
+Route::middleware(['auth', 'verified'])->group(function () {
+	Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
+
+	Route::get('/by-country', function () {
+		return view('dashboard-by-country');
+	})->name('dashboard.country');
+});
 
 Route::middleware('guest')->group(function () {
 	Route::get('/login', function () {

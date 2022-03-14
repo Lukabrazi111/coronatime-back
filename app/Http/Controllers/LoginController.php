@@ -46,10 +46,13 @@ class LoginController extends Controller
 			// Check if email is verified
 			if ($this->hasVerifiedAt($user))
 			{
+				$token = $user->createToken('auth_token')->plainTextToken;
+
 				return response()->json([
-					'loggedIn' => true,
-					'username'  => $request->username,
-					'password'  => $request->password,
+					'access_token' => $token,
+					'loggedIn'     => true,
+					'username'     => $request->username,
+					'password'     => $request->password,
 				]);
 			}
 
