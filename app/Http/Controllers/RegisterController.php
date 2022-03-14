@@ -55,7 +55,6 @@ class RegisterController extends Controller
 
 		Mail::to($user->email)->send(new UserRegisteredMail($user));
 
-		//        return redirect()->route('register')->with('success_message', __('We send you verification on email'));
 		return response()->json([
 			'send_verification' => true,
 			'message'           => 'We send you verification on email',

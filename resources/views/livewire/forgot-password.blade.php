@@ -1,8 +1,7 @@
-<form wire:submit.prevent='send' method="post" class="flex flex-col mt-4 w-full max-w-lg">
+<form action="{{ route('forgot-password.send') }}" method="post" class="flex flex-col mt-4 w-full max-w-lg">
     @csrf
     <label for="email" class="mb-2 text-left font-semibold">{{ __('Email') }}</label>
-    <input wire:model='email'
-        class="px-4 py-4 rounded-lg border border-gray-200 mb-6 @error('email') mb-3 @enderror placeholder-dark"
+    <input class="px-4 py-4 rounded-lg border border-gray-200 mb-6 @error('email') mb-3 @enderror placeholder-dark"
         type="text" name="email" id="email" placeholder="{{ __('Enter your email') }}">
     @error('email')
         <span class="text-sm text-red-600 flex">
