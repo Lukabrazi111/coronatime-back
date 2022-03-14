@@ -1,4 +1,4 @@
-<form action="#" method="post" class="flex flex-col w-full mt-2 md:w-6/12">
+<form action="{{ route('login.store') }}" method="post" class="flex flex-col w-full mt-2 md:w-6/12">
     @csrf
 
     <div class="flex flex-col relative">
