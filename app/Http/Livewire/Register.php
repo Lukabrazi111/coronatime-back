@@ -80,10 +80,8 @@ class Register extends Component
 				$user->save();
 				return redirect()->route('account.confirmed');
 			}
-			else
-			{
-				return redirect()->route('login')->with('error_message', __('Your email has already been verified!'));
-			}
+
+			return redirect()->route('login')->with('error_message', __('Your email has already been verified!'));
 		}
 	}
 

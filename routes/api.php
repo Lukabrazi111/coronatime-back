@@ -27,6 +27,7 @@ Route::post('/login', [LoginController::class, 'store']);
 Route::post('/register', [RegisterController::class, 'store']);
 Route::post('/forgot-password', [ForgotPasswordController::class, 'send']);
 Route::post('/reset-password', [ResetPasswordController::class, 'store']);
+Route::get('/user/verify/{token}', [RegisterController::class, 'verifyEmail']);
 
 Route::get('/statistics', function () {
 	return CountryStatistics::select('confirmed', 'recovered', 'deaths')->get();

@@ -61,4 +61,4 @@ Route::middleware('guest')->group(function () {
 	})->name('account.confirmed');
 });
 
-Route::get('/user/verify/{token}', [Register::class, 'verifyEmail'])->name('verification.notice');
+Route::get('/user/verify/{token}', [RegisterController::class, 'verifyEmail'])->name('verification.notice');
