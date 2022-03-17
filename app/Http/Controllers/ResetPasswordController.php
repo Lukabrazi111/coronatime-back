@@ -5,7 +5,6 @@ namespace App\Http\Controllers;
 use App\Http\Requests\ResetPasswordRequest;
 use App\Notifications\PasswordReset;
 use Illuminate\Http\Request;
-use Illuminate\Http\Response;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Str;
 use Password;
@@ -16,7 +15,6 @@ class ResetPasswordController extends Controller
 	 * Store a newly created resource in storage.
 	 *
 	 * @param Request $request
-	 *
 	 */
 	public function store(ResetPasswordRequest $request)
 	{
@@ -37,12 +35,17 @@ class ResetPasswordController extends Controller
 
 		if ($status === Password::PASSWORD_RESET)
 		{
-			return redirect()->route('password.changed')->with('status', __($status));
+            return response()->json([
+                'message' => 'Successfuly changed password',
+            ]);
+//			return redirect()->route('password.changed')->with('status', __($status));
 		}
-		else
-		{
-			session()->flash('error_message', 'Please try again...');
-			return back()->withErrors(['email' => [__($status)]]);
-		}
+
+        return response()->json([
+            'error_message' => 'Please try again...',
+        ]);
+
+//		session()->flash('error_message', 'Please try again...');
+//		return back()->withErrors(['email' => [__($status)]]);
 	}
 }

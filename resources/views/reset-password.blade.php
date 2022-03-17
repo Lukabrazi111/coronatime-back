@@ -32,8 +32,8 @@
 
                     <label for="repeat_password" class="mb-2 text-left font-semibold">Repeat password</label>
                     <input
-                        class="px-4 py-4 rounded-lg border border-gray-200 mb-6 @error('password') mb-2 @enderror placeholder-dark"
-                        type="password" name="repeat_password" id="repeat_password" placeholder="Repeat password">
+                        class="px-4 py-4 rounded-lg border border-gray-200 mb-6 @error('repeatPassword') mb-2 @enderror placeholder-dark"
+                        type="password" name="repeat_password" id="repeat_password" placeholder="Repeat password" />
                     @error('repeat_password')
                         <span class="text-sm text-red-600 flex mb-2 mt-1">
                             <img class="mr-1 w-5 h-5" src="{{ asset('img/validation/error-warning-fill.png') }}"
