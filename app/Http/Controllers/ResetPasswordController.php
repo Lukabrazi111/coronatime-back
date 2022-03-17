@@ -38,14 +38,10 @@ class ResetPasswordController extends Controller
             return response()->json([
                 'message' => 'Successfuly changed password',
             ]);
-//			return redirect()->route('password.changed')->with('status', __($status));
 		}
 
         return response()->json([
             'error_message' => 'Please try again...',
         ]);
-
-//		session()->flash('error_message', 'Please try again...');
-//		return back()->withErrors(['email' => [__($status)]]);
 	}
 }
