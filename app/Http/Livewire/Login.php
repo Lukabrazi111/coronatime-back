@@ -44,12 +44,10 @@ class Login extends Component
 			// Check if email is verified
 			if ($this->hasVerifiedAt($user))
 			{
-//				return redirect()->route('dashboard')->with('success_message', __('You are logged in successfully'));
                 return response()->json($user->name);
 			}
 			else
 			{
-//				return redirect()->route('login')->with('error_message', __('Please verify your account!'));
 				return response()->json([
 					'error_message' => 'Please verify your account!',
 				]);
