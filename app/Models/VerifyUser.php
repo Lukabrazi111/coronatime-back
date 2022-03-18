@@ -9,10 +9,7 @@ class VerifyUser extends Model
 {
 	use HasFactory;
 
-	protected $fillable = [
-		'token',
-		'user_id',
-	];
+	protected $guarded = ['id'];
 
 	public function user()
 	{

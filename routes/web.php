@@ -6,7 +6,6 @@ use App\Http\Controllers\LanguageController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\ResetPasswordController;
-use App\Http\Livewire\Register;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/lang/{lang}', [LanguageController::class, 'change'])->name('language.change');

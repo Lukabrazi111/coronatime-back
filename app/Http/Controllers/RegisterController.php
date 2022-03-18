@@ -7,8 +7,6 @@ use App\Mail\UserRegisteredMail;
 use App\Models\User;
 use App\Models\VerifyUser;
 use Carbon\Carbon;
-use Illuminate\Http\Request;
-use Illuminate\Http\Response;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Str;
@@ -18,7 +16,7 @@ class RegisterController extends Controller
 	/**
 	 * Store a newly created resource in storage.
 	 *
-	 * @param Request $request
+	 * @param RegisterRequest $request
 	 */
 	public function store(RegisterRequest $request)
 	{
@@ -52,7 +50,7 @@ class RegisterController extends Controller
 	{
 		$verifiedUser = VerifyUser::where('token', $token)->first();
 
-		if (isset($verifiedUser))
+		if ($verifiedUser)
 		{
 			$user = $verifiedUser->user;
 

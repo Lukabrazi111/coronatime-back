@@ -13,7 +13,7 @@ class LoginController extends Controller
 	/**
 	 * Store a newly created resource in storage.
 	 *
-	 * @param Request $request
+	 * @param LoginRequest $request
 	 */
 	public function store(LoginRequest $request)
 	{
@@ -25,7 +25,6 @@ class LoginController extends Controller
 		{
 			$user = Auth::user();
 
-			// Check if email is verified
 			if ($this->hasVerifiedAt($user))
 			{
 				$token = $user->createToken('auth_token')->plainTextToken;
@@ -46,7 +45,6 @@ class LoginController extends Controller
 		return response()->json(['error_message' => 'Invalid username or password']);
 	}
 
-	// Check column {email_verified_at}
 	public function hasVerifiedAt(User $user)
 	{
 		return $user->hasVerifiedEmail();

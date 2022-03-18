@@ -12,5 +12,5 @@ class CountryStatistics extends Model
 
 	public $translatable = ['name'];
 
-	protected $guarded = [];
+	protected $guarded = ['id'];
 }

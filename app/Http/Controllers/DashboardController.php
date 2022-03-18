@@ -8,11 +8,9 @@ class DashboardController extends Controller
 {
 	public function index()
 	{
-		$countryStatistics = CountryStatistics::select('confirmed', 'deaths', 'recovered')->get();
-
-		$sumConfirmed = $countryStatistics->sum('confirmed');
-		$sumRecovered = $countryStatistics->sum('recovered');
-		$sumDeaths = $countryStatistics->sum('deaths');
+		$sumConfirmed = CountryStatistics::sum('confirmed');
+		$sumRecovered = CountryStatistics::sum('recovered');
+		$sumDeaths = CountryStatistics::sum('deaths');
 
 		return view('dashboard', [
 			'confirmed' => number_format($sumConfirmed),
@@ -20,4 +18,16 @@ class DashboardController extends Controller
 			'deaths'    => number_format($sumDeaths),
 		]);
 	}
+
+    public function statistics() {
+        return CountryStatistics::all();
+    }
+
+    public function summarizedStatistics () {
+        return [
+            'confirmed' => CountryStatistics::sum('confirmed'),
+            'recovered' => CountryStatistics::sum('recovered'),
+            'deaths' => CountryStatistics::sum('deaths'),
+        ];
+    }
 }

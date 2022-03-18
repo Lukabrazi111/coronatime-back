@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\ForgotPasswordController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\RegisterController;
@@ -19,20 +20,17 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
-	return $request->user();
+
+Route::group(['middleware' => ['auth:sanctum']], function() {
+    Route::get('/user', function (Request $request) {
+        return $request->user();
+    });
+    Route::get('/statistics', [DashboardController::class, 'statistics']);
+    Route::get('/summarized-statistics', [DashboardController::class, 'summarizedStatistics']);
 });
 
 Route::post('/login', [LoginController::class, 'store']);
 Route::post('/register', [RegisterController::class, 'store']);
 Route::post('/forgot-password', [ForgotPasswordController::class, 'send']);
 Route::post('/reset-password', [ResetPasswordController::class, 'store']);
-Route::get('/user/verify/{token}', [RegisterController::class, 'verifyEmail']);
-
-Route::get('/statistics', function () {
-	return CountryStatistics::select('confirmed', 'recovered', 'deaths')->get();
-});
-
-Route::get('/get-all-statistics', function () {
-	return CountryStatistics::all();
-});
+Route::get('/verify-user/{token}', [RegisterController::class, 'verifyEmail']);
