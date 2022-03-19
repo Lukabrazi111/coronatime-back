@@ -5,7 +5,6 @@ use App\Http\Controllers\ForgotPasswordController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\ResetPasswordController;
-use App\Models\CountryStatistics;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 

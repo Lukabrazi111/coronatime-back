@@ -19,15 +19,17 @@ class DashboardController extends Controller
 		]);
 	}
 
-    public function statistics() {
-        return CountryStatistics::all();
-    }
+	public function statistics()
+	{
+		return CountryStatistics::all();
+	}
 
-    public function summarizedStatistics () {
-        return [
-            'confirmed' => CountryStatistics::sum('confirmed'),
-            'recovered' => CountryStatistics::sum('recovered'),
-            'deaths' => CountryStatistics::sum('deaths'),
-        ];
-    }
+	public function summarizedStatistics()
+	{
+		return [
+			'confirmed' => CountryStatistics::sum('confirmed'),
+			'recovered' => CountryStatistics::sum('recovered'),
+			'deaths'    => CountryStatistics::sum('deaths'),
+		];
+	}
 }
