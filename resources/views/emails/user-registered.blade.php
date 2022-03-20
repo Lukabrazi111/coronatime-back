@@ -1,6 +1,6 @@
 @component('mail::message')
 <div style="padding: 3rem 2rem;">
-<img src="http://coronatime.lukabrazi.redberryinternship.ge/img/email/Landing.png">
+<img src="http://coronatime-api.lukabrazi.redberryinternship.ge/img/email/Landing.png">
 <h1 style="text-align: center; margin-top:3rem; font-weight:900; font-size: 25px; font-style:normal; color:black">
 {{__('Confirmation email')}}
 </h1>
