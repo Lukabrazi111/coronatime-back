@@ -27,9 +27,9 @@ class DashboardController extends Controller
 	public function summarizedStatistics()
 	{
 		return [
-			'confirmed' => CountryStatistics::sum('confirmed'),
-			'recovered' => CountryStatistics::sum('recovered'),
-			'deaths'    => CountryStatistics::sum('deaths'),
+			'confirmed' => number_format(CountryStatistics::sum('confirmed')),
+			'recovered' => number_format(CountryStatistics::sum('recovered')),
+			'deaths'    => number_format(CountryStatistics::sum('deaths')),
 		];
 	}
 }
