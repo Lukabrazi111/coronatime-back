@@ -80,7 +80,7 @@ php artisan migrate:fresh --seed
 
 ## Security Vulnerabilities
 
-If you discover a security vulnerability within Movie App, please send an e-mail to Luka Khangoshvili via [lukabrazi@redberry.ge](mailto:lukabrazi@redberry.ge). All security vulnerabilities will be promptly addressed.
+If you discover a security vulnerability within Coronatime App, please send an e-mail to Luka Khangoshvili via [lukabrazi@redberry.ge](mailto:lukabrazi@redberry.ge). All security vulnerabilities will be promptly addressed.
 
 ## License
 
