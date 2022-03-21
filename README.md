@@ -28,7 +28,7 @@ and also you can register and freely view the statistics.
 ### Prerequisites:
 - Laravel 8
 - PHP 8.1.3
-- MYSQL 8.0/*
+- MYSQL 8.0
 - NPM 8.1.0
 - Composer 2.1.9
 ## Getting Started
